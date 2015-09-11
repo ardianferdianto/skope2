@@ -31,7 +31,7 @@ body {
 	width: 95%;
 	max-width:1340px;
 	position: relative;
-	margin: 100px auto 50px;
+	margin: 30px auto 50px;
 }
 
 @media all and (max-width: 965px) {
@@ -48,15 +48,21 @@ body {
 
 
 .filemanager .breadcrumbs {
-	color: #ffffff;
+	color: #3D3D3E;
 	margin-left:20px;
-	font-size: 24px;
+	font-size: 14px;
 	font-weight: 700;
 	line-height: 35px;
+	background: #E0E0E0;
+	text-align: left;
+	padding-left: 30px;
+}
+.bread_details{
+	color:  #6a6a72;
 }
 
 .filemanager .breadcrumbs a:link, .breadcrumbs a:visited {
-	color: #ffffff;
+	color: #3D3D3E;
 	text-decoration: none;
 }
 
@@ -66,9 +72,12 @@ body {
 
 .filemanager .breadcrumbs .arrow {
 	color:  #6a6a72;
-	font-size: 24px;
+	font-size: 14px;
 	font-weight: 700;
 	line-height: 20px;
+}
+.filemanager h2{
+	font-size: 1.5em;
 }
 
 
@@ -153,8 +162,9 @@ body {
 -------------------------*/
 
 .filemanager .data {
-	margin-top: 60px;
+	margin-top: 10px;
 	z-index: -3;
+	text-align: left;
 }
 
 .filemanager .data.animated {
@@ -165,7 +175,7 @@ body {
 .filemanager .data li {
 	border-radius: 3px;
 	background-color: #373743;
-	width: 307px;
+	width: 207px;
 	height: 118px;
 	list-style-type: none;
 	margin: 10px;
@@ -194,10 +204,10 @@ body {
 
 .filemanager .data li .name {
 	color: #ffffff;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: 700;
 	line-height: 20px;
-	width: 150px;
+	width: 100px;
 	white-space: nowrap;
 	display: inline-block;
 	position: absolute;
@@ -208,7 +218,7 @@ body {
 
 .filemanager .data li .details {
 	color: #b6c1c9;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 400;
 	width: 55px;
 	height: 10px;
@@ -550,4 +560,8 @@ footer #tzine-actions iframe{
 
 @media (max-width: 1024px) {
 	#bsaHolder, footer{ display:none;}
+}
+.bread_details{
+	color: #3D3D3E;
+	font-size: 12px;
 }

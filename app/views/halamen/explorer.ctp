@@ -1,10 +1,6 @@
 
 <div class="filemanager">
-
-    <div class="search">
-      <input type="search" placeholder="Find a file.." />
-    </div>
-
+    <h2> REFERENSI PENELITIAN</h2>
     <div class="breadcrumbs"></div>
 
     <ul class="data"></ul>
@@ -394,7 +390,7 @@ function req(){
 
       }
 
-      breadcrumbs.text('').append(url);
+      breadcrumbs.text('').append('<span class="bread_details">Anda berada di: </span>'+url);
 
 
       // Show the generated elements

@@ -367,7 +367,7 @@ $(function(){
 
 			}
 
-			breadcrumbs.text('').append(url);
+			breadcrumbs.text('').append('Anda berada di:'+url);
 
 
 			// Show the generated elements

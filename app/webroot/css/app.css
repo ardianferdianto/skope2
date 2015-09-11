@@ -1,5 +1,5 @@
 .bt-title{
-	background-color: #f9f4dd;
+	background-color:#f9f4dd;
 	width: 100%;
 }
 .bt-pages{
@@ -18,11 +18,12 @@
   min-height: 120px;
 }
 #commandpanel{
-  margin-left:-94%;
+  left: 0;
+  position: absolute;
 }
 .row .pollSlider{
     position: fixed;
-    height: 199px;
+    
     background: #f7f7f7;
     width: 25%;
     right: 0px;
@@ -57,4 +58,23 @@ span.sortabledrag{
 }
 ul .sort li{
   list-style: none;
+}
+.pollSlider{
+  height: 600px;
+  background: #EDEDED;
+}
+#tambahpage{
+  position: relative; 
+    height: 80px; 
+    width: 80px; 
+    background-color: #7badd9; 
+    border-radius: 80px; 
+    font-size: 20px;
+}
+#tambahpage:hover{
+  background: #286090;
+  color: #fff;
+}
+#tambahpage h1{
+  margin-top: 0;
 }

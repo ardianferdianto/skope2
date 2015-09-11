@@ -25,7 +25,7 @@
       <a href="<?php echo $this->webroot;?>" class="btn btn-success btn-lg">SIMPAN</a>
     </div>
     <div class="col-md-9 rightpanel" style="left: 0%;">
-      <button id="commandpanel" class="btn btn-primary glyphicon glyphicon-menu-left" title="hide panel"> hide</button>
+      <button id="commandpanel" class="btn btn-primary glyphicon glyphicon-menu-left" title="hide panel"> Tampilkan referensi</button>
       <div class="title_container_createnew">
         <h1 class="title_createnew"> Menulis Penelitian </h1>
         <p>Selamat datang di modul penulisan penelitian, untuk menambah halaman penelitian silahkan klik (+) disamping </p>
@@ -199,8 +199,8 @@
   $( ".pollSlider" ).hover(
         
   function () {
-    $('.rightpanel').transition({ width: '50%'});
-    $('.pollSlider').transition({ width: '50%'});
+    $('.rightpanel').transition({ width: '29%'});
+    $('.pollSlider').transition({ width: '70%'});
   },
 
   function() {
@@ -225,6 +225,7 @@
       $('.pollSlider').transition({opacity:100,right:0});
       
       $('#commandpanel').addClass('glyphicon-menu-right');
+      $('#commandpanel').text('Sembunyikan referensi');
       window.staterightside = 'showed';
   }
 
@@ -245,6 +246,7 @@
       
     $('.pollSlider').transition({opacity:0,right:50});
     $('#commandpanel').addClass('glyphicon-menu-left');
+    $('#commandpanel').text('Tampilkan referensi');
     window.staterightside = 'notshown';
 
   }
