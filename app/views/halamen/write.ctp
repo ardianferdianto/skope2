@@ -54,7 +54,13 @@
 
   $(document).ready(function() { 
     $('#step1_createnew').hide();
-    
+    $.ajax({
+      url:"<?php echo $this->webroot; ?>halamen/explorer",
+      dataType: 'html',
+      success: function(result){
+        $('.pollSlider').html(result);
+      }
+    });
     $(".col-md-3.leftpanel.pages").sortable({
       handle: 'button',
       cancel: '',
@@ -183,7 +189,7 @@
     }else{
       $(".col-md-3.leftpanel").show('slide');
       $( ".btn.btn-primary.glyphicon#commandpanel" ).toggleClass('glyphicon-menu-left glyphicon-menu-right');
-      $('.pollSlider').hide('slide').delay(2000);
+      $('.pollSlider').hide('slide');
     }
         
   });

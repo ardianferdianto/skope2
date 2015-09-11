@@ -515,6 +515,9 @@ class HalamenController extends AppController {
 		//$this->set('flash',$flashMessage);
 		$this->set('halamanID',$id);
 	}
+	function explorer(){
+		$this->layout = 'default_exp';
+	}
 	function pages($id){
 		//$this->autoRender = false;
 		$hal=$this->Halaman->find('all',array('fields' => array('Halaman.order','Halaman.id','Halaman.deskripsi_halaman'),'conditions'=>array('Halaman.lesson_id'=>$id),'order' => array('Halaman.order' => 'asc')));
