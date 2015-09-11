@@ -4,7 +4,6 @@
     <div class="breadcrumbs"></div>
 
     <ul class="data"></ul>
-    <div id="pdf"></div>
     <div class="nothingfound">
       <div class="nofiles"></div>
       <span>No files here.</span>
@@ -12,15 +11,20 @@
 
   </div>
   <script>
-  $(document).ready(function() { 
-    req();
-    $('.data').show();
-  });
+
   $(function(){  
     req();
   // Start by fetching the file data from scan.php with an AJAX request
 
 });
+$('ul.data').on('click', 'a.files', function () {
+  $('#pdf').show('slide');
+  $('li.files').hide();
+  var path_fix=$(this).data('pathpdf');
+  $('#pdf').empty().append('<iframe width="100%" height="100%" name="plugin" src="'+path_fix+'" type="application/pdf"></iframe>');
+  
+});
+                        
 function req(){
   var filemanager = $('.filemanager'),
     breadcrumbs = $('.breadcrumbs'),
@@ -350,10 +354,13 @@ function req(){
 
           icon = '<span class="icon file f-'+fileType+'">.'+fileType+'</span>';
           if(fileType==='pdf'){
-            var file = $('<li class="files"><a href="<?php echo $this->webroot."cf/"; ?>'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
+            var pth="<?php echo $this->webroot."cf/"; ?>"+f.path;
+            var file = $('<li class="files"><a title="'+ f.path +'" data-pathpdf="'+pth+'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
           }else{
             var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');  
           }
+          var pdfcont=$('<div id="pdf" style="display:none;"></div>');
+          pdfcont.appendTo(fileList);
           //<embed width="100%" height="100%" name="plugin" src="/eval_sd/quizzs/show_pdf/8/55" type="application/pdf">
           file.appendTo(fileList);
         });
