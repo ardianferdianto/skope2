@@ -61,6 +61,8 @@
 
     </script>
     <script src="<?php echo $this->webroot;?>js/jquery.animsition.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/jquery.transit.min.js"></script>
+    
     <script type="text/javascript">
     $(document).ready(function() {
   
