@@ -1,9 +1,7 @@
 
 <div class="masthead clearfix">
   <div class="inner">
-   <h1 class="cover-heading">
-    <span style="color:#40c4ff;font-size:7em;">SKO</span><span style="color:#fdd734;font-size:7em;">PE</span><br/>
-    theSMARTMICROSCOPE</h1>
+   
   </div>
 </div>
 
@@ -25,7 +23,7 @@
       <a href="<?php echo $this->webroot;?>" class="btn btn-success btn-lg">SIMPAN</a>
     </div>
     <div class="col-md-9 rightpanel" style="left: 0%;">
-      <button id="commandpanel" class="btn btn-primary glyphicon glyphicon-menu-left" title="hide panel">hide</button>
+      <button id="commandpanel" class="btn btn-primary glyphicon glyphicon-menu-left" title="hide panel"> hide</button>
       <div class="title_container_createnew">
         <h1 class="title_createnew"> Menulis Penelitian </h1>
         <p>Selamat datang di modul penulisan penelitian, untuk menambah halaman penelitian silahkan klik (+) disamping </p>
@@ -38,7 +36,7 @@
       <button id="edit" class="btn btn-primary" style="display:none;" >Edit</button>
       <button id="delete" class="btn btn-warning" style="display:none;" >Delete</button>
     </div>
-    <div class="pollSlider" style="display:none;"></div>
+    <div class="pollSlider" style="display:none;right:-50px;"></div>
   </div>
 
 
@@ -181,18 +179,72 @@
       $('#edit') .hide();
       $('#delete').hide();
   });
+
+  window.staterightside = 'notshown';
+
   $("#commandpanel").click(function() {
-    if($('.col-md-3.leftpanel').is(":visible")){
-      $(".col-md-3.leftpanel").hide('slide');
-      $( ".btn.btn-primary.glyphicon#commandpanel" ).toggleClass('glyphicon-menu-left glyphicon-menu-right');
-      $('.pollSlider').show('slide').delay(2000);
+
+    if(window.staterightside == 'notshown'){
+      
+      showsidebar();
+
     }else{
-      $(".col-md-3.leftpanel").show('slide');
-      $( ".btn.btn-primary.glyphicon#commandpanel" ).toggleClass('glyphicon-menu-left glyphicon-menu-right');
-      $('.pollSlider').hide('slide');
+
+      hidesidebar();
     }
-        
   });
+
+  $( ".pollSlider" )
+  .mouseover(function() {
+    $('.rightpanel').transition({ width: '50%'});
+    $('.pollSlider').transition({ width: '50%'});
+  })
+  .mouseout(function() {
+    $('.rightpanel')
+    .transition({ width: '75%'});
+    $('.pollSlider')
+    .transition({ width: '25%'});
+  });
+  
+
+  function showsidebar(){
+    $('#commandpanel').removeClass('glyphicon-menu-left');
+      $('.leftpanel')
+      .transition({ left:-20})
+      .transition({ opacity: 0 });
+      $('.leftpanel').hide();
+      $('.rightpanel')
+      .transition({ left: -10})
+      .transition({ left: 0});
+      $('.pollSlider').show();
+      $('.pollSlider').css('opacity',0);
+      $('.pollSlider').transition({opacity:100,right:0});
+      
+      $('#commandpanel').addClass('glyphicon-menu-right');
+      window.staterightside = 'showed';
+  }
+
+  function hidesidebar(){
+
+    $('#commandpanel').removeClass('glyphicon-menu-right');
+
+    $('.leftpanel').show();
+    $('.leftpanel').css('opacity',100);
+      
+    $('.leftpanel')
+    .transition({ left:0});
+
+    $('.rightpanel')
+    .transition({ left: 10})
+    .transition({ left: 0});
+    $('.pollSlider').hide();
+      
+    $('.pollSlider').transition({opacity:0,right:50});
+    $('#commandpanel').addClass('glyphicon-menu-left');
+    window.staterightside = 'notshown';
+
+  }
+
   function cek_pages(){
     $.ajax({
       dataType:'json',
