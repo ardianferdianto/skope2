@@ -2,11 +2,7 @@
     <link href="<?php echo $this->webroot."cf/";?>assets/css/styles.css" rel="stylesheet"/>
 
   <!-- Custom basic template -->
-    <?php
 
-      //echo $html->css('normalize.css');
-      //echo $html->css('book1.css');
-    ?>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><![endif]-->
     

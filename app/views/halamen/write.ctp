@@ -1,3 +1,5 @@
+    
+    
 
 <div class="masthead clearfix">
   <div class="inner">
@@ -194,12 +196,14 @@
     }
   });
 
-  $( ".pollSlider" )
-  .mouseover(function() {
+  $( ".pollSlider" ).hover(
+        
+  function () {
     $('.rightpanel').transition({ width: '50%'});
     $('.pollSlider').transition({ width: '50%'});
-  })
-  .mouseout(function() {
+  },
+
+  function() {
     $('.rightpanel')
     .transition({ width: '75%'});
     $('.pollSlider')
