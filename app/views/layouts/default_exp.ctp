@@ -6,9 +6,6 @@
 
       //echo $html->css('normalize.css');
       //echo $html->css('book1.css');
-      echo $javascript->link('jquery-2.1.4.min.js');
-      echo $javascript->link('jquery.form.min.js');
-      echo $javascript->link('jquery-ui.min.js');
     ?>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><![endif]-->
