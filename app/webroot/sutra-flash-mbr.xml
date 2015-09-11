@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:jwplayer="http://developer.longtailvideo.com/">
+
+  <channel>
+    <title>Flash Multi Bit Rate Playlist</title>
+
+    <item>
+      <title>Live Streaming</title>
+
+      <description>Put your description here.</description>
+      <media:group>
+        <media:content bitrate="600" url="sutra1" width="720" />
+        <media:content bitrate="300" url="sutra2" width="720" />
+        <media:content bitrate="100" url="sutra3" width="720" />
+      </media:group>
+
+      <jwplayer:streamer>rtmp://202.129.216.27:1970/livesutra</jwplayer:streamer>
+      <jwplayer:provider>rtmp</jwplayer:provider>
+    </item>
+
+  </channel>
+</rss>
+

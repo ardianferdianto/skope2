@@ -1,0 +1,121 @@
+<!doctype html>
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+	<meta charset="utf-8">
+	<style>
+	.js #features {
+	margin-left: -12000px; width: 100%;
+}
+</style>
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	   Remove this if you use the .htaccess -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+	<title>SKOPE</title>
+	
+	<!-- Bootstrap core CSS -->
+	<!-- CSS : implied media="all" -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="wow_book.css" rel="stylesheet">
+    <link href="css/preview.css" rel="stylesheet">
+    <link href="css/nanoscroller.css" rel="stylesheet">
+    <link href="css/component_lesson.css" rel="stylesheet">
+
+	<!--<link href='http://fonts.googleapis.com/css?family=News+Cycle' rel='stylesheet' type='text/css'>
+	<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+	<div id="container">
+	<div id="main">
+		<img id='click_to_open' src="images/click_to_open.png" alt='click to open' />
+  		<div id='features'>
+
+		</div> <!-- features -->
+
+	</div>
+	<nav class="navigasiwow">
+		<ul>
+			<li><a id='first'     href="#" title='goto first page'   >First page</a></li>
+			<li><a id='back'      href="#" title='go back one page'  >Back</a></li>
+			<li><a id='next'      href="#" title='go foward one page'>Next</a></li>
+			<li><a id='last'      href="#" title='goto last page'    >last page</a></li>
+			<li><a id='zoomin'    href="#" title='zoom in'           >Zoom In</a></li>
+			<li><a id='zoomout'   href="#" title='zoom out'          >Zoom Out</a></li>
+			<li><a id='slideshow' href="#" title='start slideshow'   >Slide Show</a></li>
+			<li><a id='flipsound' href="#" title='flip sound on/off' >Flip sound</a></li>
+		</ul>
+	</nav>
+	
+	</div> <!--! end of #container -->
+	<footer>
+		
+	</footer>
+</div>
+
+
+	<!-- Javascript at the bottom for fast page loading -->
+
+	<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+	<script type="text/javascript" src="wow_book.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nanoscroller.min.js"></script>
+<style>
+.makecenter{
+	position: absolute;
+	display: inline-block;
+	right: 0;
+	width: 61px;
+	padding: 5px 10px;
+}
+.makecenter > a {
+	color: #000;
+	background-color: transparent;
+	border: 1px solid;
+	margin: 2px;
+
+}
+</style>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".nano").nanoScroller();
+
+			$('#features').wowBook({
+				 height : 550
+				,width  : 950
+				,centeredWhenClosed : true
+				,hardcovers : true
+				,turnPageDuration : 1000
+				,numberedPages : [1,-2]
+				,controls : {
+						zoomIn    : '#zoomin',
+						zoomOut   : '#zoomout',
+						next      : '#next',
+						back      : '#back',
+						first     : '#first',
+						last      : '#last',
+						slideShow : '#slideshow',
+						flipSound : '#flipsound'
+					}
+			}).css({'display':'none', 'margin':'auto'}).fadeIn(1000);
+
+			$("#cover").click(function(){
+				$.wowBook("#features").advance();
+			});
+
+
+		});
+	</script>
+
+	<!-- scripts concatenated and minified via ant build script-->
+	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

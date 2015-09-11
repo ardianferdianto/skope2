@@ -1,0 +1,60 @@
+.bt-title{
+	background-color: #f9f4dd;
+	width: 100%;
+}
+.bt-pages{
+	background-color: rgba(249, 0, 0, 0.28);
+	width: 100%;
+}
+.col-md-3.leftpanel.pages{
+	height: 80% !important;
+	width: 100%;
+	overflow-x: hidden;
+}
+#origin
+{
+  background-color: lightgreen;
+  min-width: 600px;
+  min-height: 120px;
+}
+#commandpanel{
+  margin-left:-94%;
+}
+.row .pollSlider{
+    position: fixed;
+    height: 199px;
+    background: #f7f7f7;
+    width: 25%;
+    right: 0px;
+    margin-right: 0%;
+}
+#origin span, #drop span {
+  margin-top: 3px;
+  margin-left: 5px;
+}
+
+#drop
+{
+  background-color: red;
+  min-height: 120px;
+}
+.over {
+  border: solid 5px purple;
+}
+.draggable
+{
+  border: solid 2px gray;
+}
+span.sortabledrag{
+    background:$f1f1f1;
+    /*border:1px solid gray;*/
+    padding:5px;
+    display:block;
+}
+.hal{
+  padding-left: 12em;
+  font-style: italic;
+}
+ul .sort li{
+  list-style: none;
+}

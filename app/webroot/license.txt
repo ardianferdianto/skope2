@@ -1,0 +1,91 @@
+Please review the following license agreement before installing or using the 
+Eteaching, any individual plug-in component or other software product, and/or 
+all related materials.
+
+Definitions:
+============
+This Based Idea doo End-User Software License Agreement ("EULA") is a legal agreement 
+between you (either as an individual user, corporation or single entity) and 
+Based Idea doo for the Eteaching software product - which includes computer 
+software, and may include associated media, printed materials, and "online" or 
+electronic documentation ("Eteaching" or "SOFTWARE"). By exercising your 
+rights to install the Eteaching, you agree to be bound by the terms of this 
+End User License Agreement ("EULA"), including the limitations and warranty 
+disclaimers. If you do NOT agree to the terms of this EULA, you may not install 
+nor use the Eteaching; If this is the case, please uninstall the Eteaching 
+from your system immediately, and destroy all copies of the Eteaching and all 
+of its component parts, source code, associated documentation, and related 
+materials.
+
+Eteaching License:
+=====================
+The Eteaching is protected by copyright laws and international copyright 
+treaties, as well as other intellectual property laws and treaties.
+
+1. GRANT OF LICENSE.
+--------------------
+
+This is a license agreement, and NOT an agreement for sale. Based Idea doo retains 
+ownership of the copy of THE SOFTWARE in your possession, and all copies you may 
+be licensed to make. Based Idea doo retains all rights not expressly granted to you in 
+this LICENSE. Based Idea doo hereby grants to you, and you accept, a non-exclusive, 
+non-transferable license to use, copy and modify THE SOFTWARE only as authorized 
+below.
+
+This EULA grants you the following rights:
+
+You are granted a license AT A SINGLE WEBSITE LOCATION (URL). You are also 
+prohibited to remove "Eteaching Powered" link at the bottom of the webpage, 
+unless you purchase "Branding Removal" option which allows you to remove all 
+marks of Based Idea doo or Eteaching.
+
+In no case shall you rent, lease, lend, redistribute nor re-license Eteaching 
+or any related source code to a 3rd party individual or entity. In no case shall 
+you grant further redistribution rights for Eteaching to the end-users of 
+your solution.
+
+UNDER NO CIRCUMSTANCES MAY THE SOURCE CODE OR THE COMPILED PRODUCT BE USED AS 
+THE BASIS FOR CREATING A PRODUCT THAT CONTAINS THE SAME, OR SUBSTANTIALLY THE 
+SAME, FUNCTIONALITY AS ANY Based Idea DOO PRODUCT.
+
+2. DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS.
+-----------------------------------------------
+
+Termination: Without prejudice to any other rights, Based Idea doo may terminate this 
+EULA if you fail to comply with the terms and conditions of this EULA. In such 
+event, you must destroy all copies of the Eteaching and all of its component 
+parts, source code, associated documentation, and related materials.
+
+3. COPYRIGHT.
+-------------
+
+All title and copyrights in and to the Eteaching (including but not limited 
+to any images, photographs, animations, video, audio, music, text, and "applets" 
+incorporated into the Eteaching), the accompanying printed materials, and any 
+copies of the Eteaching are owned by Based Idea doo.
+
+The Eteaching is protected by U.S. copyright laws and international treaty 
+provisions. Therefore, you must treat the Eteaching like any other 
+copyrighted material.
+
+4. LIMITED WARRANTY.
+--------------------
+
+NO WARRANTIES. Based Idea doo expressly disclaims any warranty for the Eteaching. 
+The Eteaching and any related documentation is provided "as is" without 
+warranty of any kind, either expressed or implied, including, without 
+limitation, the implied warranties of merchantability, fitness for a particular 
+purpose, or non-infringement. The entire risk arising out of use or performance 
+of the Eteaching remains with you.
+
+5. LIMITATION OF LIABILITY.
+---------------------------
+
+NO LIABILITY FOR CONSEQUENTIAL DAMAGES. In no event shall Based Idea doo or its 
+distributors be liable for any damages whatsoever (including, without 
+limitation, damages for loss of business profits, business interruption, loss of 
+business information, or any other pecuniary loss) arising out of the use of or 
+inability to use this Based Idea doo product (Eteaching) and related materials, even 
+if Based Idea doo has been advised of the possibility of such damages. Because some 
+states do not allow the exclusion or limitation of liability for consequential 
+or incidental damages, the above limitation may not apply to you.

@@ -1,0 +1,361 @@
+html,body,h1,h2,h3,h4,h5,h6,p,form,fieldset,img,ul,ol,li
+{
+margin:0;
+padding:0;
+border:0 none;
+}
+ul,ol,li
+{
+list-style:none;
+}
+body
+{
+text-align:center;
+font:13px Arial, Helvetica, sans-serif;
+color:#f1fbf9;
+background:#72c1b0;
+}
+.clearfix:after
+{
+content:".";
+display:none;
+height:0;
+clear:both;
+visibility:hidden;
+}
+.clearfix
+{display:inline-block;}
+#wrap
+{
+position:relative;
+margin:0 auto;
+text-align:left;
+width:1050px;
+padding-top:50px;
+}
+#main{
+	float:left;
+	width:483px;
+	margin-top:-10px;
+	position:fixed;
+}
+
+#content{
+	float:right;
+	margin:0 40px 0 0;
+	position:relative;
+	width:485px;
+}
+.header h1{
+	background:transparent url(../art/install/welcome.gif);
+	margin-bottom:6px;
+	width:472px;
+	height:69px;
+	text-indent:-10000px;
+}
+.header p{
+	font-size:14px;
+	color:#fff;
+	margin-bottom:3px;
+}
+.menu{
+	margin-top:7px;
+}
+.menu ul li{
+	background:transparent url(../art/install/border.gif)bottom left repeat-x;
+	
+	
+}
+.menu ul li a{
+	width:480px;
+	padding:20px 10px;
+	
+}
+
+.menu ul li div{
+	width:480px;
+	padding:20px 10px;
+	
+}
+
+.menu ul li a:hover{
+	background:rgba(0,0,0,0.1);
+}
+
+
+.menu ul li a p,.menu ul li div p{
+	padding-top:20px;
+	color:#c0f3e8;
+	float:right;
+	text-align:right;
+	width:210px;
+}
+
+.menu ul li a p.third{
+	padding-top:5px;
+}
+.menu ul li a:hover p{
+	color:#fff;
+}
+#loading_list ul li div p{
+	padding-top:5px;
+	color:#c0f3e8;
+	float:right;
+	text-align:left;
+	width:230px;
+}
+#loading_list ul li div p img{
+	float:left;
+	margin:0 9px 5px 0;
+}
+#loading_list ul li div p span{
+	color:#fff;
+	margin:5px 0 0;
+	display:block;
+}
+.menu ul li a span.logo-menu,.menu ul li div span.logo-menu{
+	display:block;
+	float:left;
+	
+}
+.menu ul li a span#sims,.menu ul li div span#sims{
+	background:transparent url(../art/install/sims-logo.png)bottom left no-repeat;
+	width:193px;
+	height:60px;
+}
+.menu ul li a span#elips,.menu ul li div span#elips{
+	background:transparent url(../art/install/elibs-logo.png)bottom left no-repeat;
+	width:170px;
+	height:60px;
+}
+.menu ul li a span#elearn,.menu ul li div span#elearn{
+	background:transparent url(../art/install/elearn-logo.png)bottom left no-repeat;
+	width:199px;
+	height:59px;
+}
+
+.menu ul li a:hover span#sims,.menu ul li span.active#sims{
+	background:transparent url(../art/install/sims-logo-active.png)bottom left no-repeat;
+}
+.menu ul li a:hover span#elips,.menu ul li span.active#elips{
+	background:transparent url(../art/install/elibs-logo-active.png)bottom left no-repeat;
+}
+.menu ul li a:hover span#elearn,.menu ul li span.active#elearn{
+	background:transparent url(../art/install/elearn-logo-active.png)bottom left no-repeat;
+}
+
+.footer{
+	margin:70px 0 0;
+	color:#aff3e4;
+}
+.special{
+	position:absolute;
+	top:450px;
+}
+
+.button {
+font-family: Helvetica,Arial,sans-serif;
+margin: 10px 0;
+float: left;
+-moz-border-radius:5px 5px 5px 5px;
+-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);
+background: #c42a00 url("../art/install/overlay-button.png") repeat-x scroll 0 0;
+border:none;
+border-bottom:1px solid rgba(0, 0, 0, 0.25);
+color:#FFFFFF !important;
+cursor:pointer;
+display:inline-block;
+font-size: 11px;
+text-transform: uppercase;
+font-weight:bold;
+line-height:1;
+overflow:visible;
+padding:16px 25px 16px;
+position:relative;
+text-decoration:none;
+text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+width:auto;
+}
+
+.button:active{
+	position: relative;
+	top: 1px;
+}
+.button:hover{
+	background: #f73500 url("../art/install/overlay-button.png") repeat-x scroll 0 0;
+	text-decoration: none;
+}
+
+
+.install h1 { padding: 0px 0px 0px 20px;  }
+
+#install h2 { border-bottom: 1px dashed #d1ebe5; margin: 6px 0px 14px 0px;color: #FFFFFF; padding-bottom:6px;}
+#install p.desc{margin:0 0 20px;}
+#install .forgot { float: right; }
+#install .input-normal{
+	background-color: #F0F0F0;
+    border-color: #B4B4B4 #FEFEFE #FEFEFE #B4B4B4;
+    border-style: solid;
+    border-width: 1px;
+    width: 95%;
+}
+#install input[type=text],
+#install input[type=password],
+#install textarea.input-normal{
+		background-color: #FBFBFB;
+	    border: 2px solid #FBFBFB;
+	    border-radius: 4px 4px 4px 4px;
+	    font-size: 12px;
+	    padding: 11px 5px 11px 8px;
+	    position: relative;
+	    width: 250px;
+	    z-index: 2;
+		margin:5px 0;
+}
+.year-set{
+	background-color: #FBFBFB;
+    border: 2px solid #FBFBFB;
+    border-radius: 4px 4px 4px 4px;
+    font-size: 12px;
+    padding: 11px 5px 11px 8px;
+    position: relative;
+    z-index: 2;
+	margin:5px 0;
+	width: 250px;
+}
+
+
+#install input[type=text]:focus,
+#install input[type=password]:focus,#install textarea:focus,#install div.radio-set span:focus,.year-set:focus {
+	border: 2px solid #409997;
+}
+form label {
+    
+	width:100px;
+    text-transform: capitalize;
+}
+label {
+    
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+	top:2px;
+}
+span.info {
+   
+    font-size: 11px;
+    position: relative;
+    margin-top:4px;
+}
+.install #footer { background: none; color: #444; }
+.install #footer a { color: #444; }
+
+.notice, .message {
+    background: none repeat scroll 0 0 #FFF6BF;
+    border-color: #FFD324;
+    color: #817134;
+	text-align:center;
+}
+.notice_box {
+    background: none repeat scroll 0 0 #FFF6BF;
+	border: 1px solid #FFD324;
+    color: #817134;
+	text-align:left;
+	margin-bottom: 1em;
+    padding: 15px 0.8em;
+	line-height:24px;
+}
+.blue_box{
+	background: none repeat scroll 0 0 #eaf7dc;
+    color: #41453d;
+	border: 1px solid #9aa291;
+    margin-bottom: 1em;
+    padding: 15px 0.8em;
+	line-height:24px;
+	text-align:left;
+}
+
+.error, .notice, .success, .message {
+    border: 1px solid #558f83;
+    margin-bottom: 1em;
+    padding: 15px 0.8em;
+}
+.lanjut{
+	float:right;
+}
+.left{
+	float:left;
+}
+.textarea label{
+	vertical-align:top;
+}
+div.radio-set{
+	margin:5px 0;
+}
+div.radio-set span{
+	border-radius: 4px 4px 4px 4px;
+    padding: 8px 3px;
+	background-color:#FBFBFB;
+	margin-right:4px;
+	margin:5px 4px 5px 0;
+	display:inline-block;
+}
+span.agreement{
+	border-radius: 4px 4px 4px 4px;
+    padding: 28px 3px 10px;
+	background-color:#569285;
+	margin-right:4px;
+	margin:-20px 4px 5px 0;
+	display:block;
+	color:#fff;
+	font-size:11px;
+	width:140px;
+}
+h3{
+	border-bottom: 1px dashed #d1ebe5; margin: 6px 0px 14px 0px;color: #FFFFFF; padding-bottom:6px;
+}
+div.radio-set span label{
+color:#394e49;
+font-size:11px;	
+}
+
+p.intro{
+	line-height:18px;
+	
+}
+form .error{
+	border: none;
+	margin-bottom: 0;
+	padding: 0;
+}
+form .error-message{
+	margin-left:100px;
+	padding:4px;
+	background:#ffc7bf;
+	color: #40211d;
+	margin-bottom:10px;
+}
+#license-agreement textarea{
+		border: 1px solid #569285;
+	    color: #999999;
+	    font: 10pt 'Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+	    padding: 5px 7px;
+}
+#license-agreement textarea:focus{
+	border: 1px solid #569285;
+    color: #5a5a5a;
+}
+
+table.precheck img{
+	float:left;
+	margin:3px 5px 0 0;
+}
+table.precheck td.message-check{
+	width:360px;
+}
+table.precheck tr{
+	border-bottom:1px dashed #acb6a2;
+	padding-bottom:5px;
+	display:block;
+	margin:8px 0;
+}
