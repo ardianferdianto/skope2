@@ -32,7 +32,7 @@
 	height   : 100%;
 	position : absolute;
 	top      : 0;
-	width    : 50px;
+	width    : 20px;
 	z-index  : 10000;
 }
 
@@ -146,4 +146,7 @@
 }
 .wowbook-page-holded object {
 	/* visibility: hidden; */
+}
+.contenttextbook table tr td{
+	border: 1px solid #CECECE;
 }
