@@ -1,6 +1,6 @@
 <?php
 
-$dir = "../source/files";
+$dir = "files";
 
 // Run the recursive function 
 
