@@ -1,6 +1,6 @@
-    
-    
+<?php 
 
+?>
 <div class="masthead clearfix">
   <div class="inner">
    

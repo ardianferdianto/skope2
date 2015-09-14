@@ -29,7 +29,7 @@ function req(){
   var filemanager = $('.filemanager'),
     breadcrumbs = $('.breadcrumbs'),
     fileList = filemanager.find('.data');
-  $.get('<?php echo $this->webroot."cf/"?>scan.php', function(data) {
+  $.get('<?php echo $this->webroot."source/exp/"?>scan.php', function(data) {
     console.log(data);
     var response = [data],
       currentPath = '',
