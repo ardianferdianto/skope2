@@ -63,6 +63,7 @@
     <script src="<?php echo $this->webroot;?>js/jquery.animsition.min.js"></script>
     <script src="<?php echo $this->webroot;?>js/jquery.transit.min.js"></script>
     
+<script src="<?php echo $this->webroot;?>node/notify.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
   
@@ -107,7 +108,9 @@
     <div class="site-wrapper animsition">
 
       <div class="site-wrapper-inner">
-
+        <button id="connectnode" type="button" class="btn btn-warning btn-lg buttonmikroskop" >
+            <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Server
+        </button>
         <div class="cover-container <?php if($contentdisplay == 'content'):?>contentdisplayed <?php endif;?>">
           
           <?php echo $content_for_layout;?>

@@ -1,6 +1,6 @@
 <?php
 
-$dir = "files";
+$dir = "files_referensi";
 
 // Run the recursive function 
 
@@ -60,7 +60,7 @@ function scan($dir){
 header('Content-type: application/json');
 
 echo json_encode(array(
-	"name" => "files",
+	"name" => "files_referensi",
 	"type" => "folder",
 	"path" => $dir,
 	"items" => $response

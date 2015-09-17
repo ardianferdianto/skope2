@@ -1,3 +1,6 @@
+<a href="<?php echo $this->webroot;?>js/filemanager/dialog.php?type=0" type="button" class="btn btn-warning btn-lg buttonexplorer" >
+    <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Mikroskop
+</a>
 <button type="button" class="btn btn-warning btn-lg buttonmikroskop" >
     <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Mikroskop
 </button>
@@ -35,7 +38,12 @@
   filebrowserImageBrowseUrl : '<?php echo $this->webroot;?>js/filemanager/dialog.php?type=1&editor=ckeditor&fldr='});
 
           
-        
+     /*   $('.buttonexplorer').fancybox({
+        'width' : 880,
+        'height'  : 570,
+        'type'  : 'iframe',
+        'autoScale'   : false
+          });*/
 
     
 
