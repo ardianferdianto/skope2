@@ -26,6 +26,9 @@ class HalamenController extends AppController {
 	function tes_node(){
 		$this->layout = 'default_node';
 	}
+	function skope_conference(){
+		$this->layout = 'default_server';
+	}
 
 	function bikin(){
 

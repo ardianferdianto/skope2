@@ -1,11 +1,32 @@
 <?php
-use ElephantIO\Client as ElephantIOClient;
-include("elephantio/Client.php");
-$elephant = new ElephantIOClient('http://localhost:3000', 'socket.io', 1, false, false, true);
-$elephant->setHandshakeTimeout(1000);
-$elephant->init();
-$elephant->send(
-ElephantIOClient::TYPE_EVENT, null, null, json_encode(array('name' => 'iotoserver', 'args' => array('channel' => 'my_first_channel', 'message' => 'my message to all the online users')))
-    );
-$elephant->close();
+use elephantio\Client as ElephantIOClient;
+App::import('Vendor','elephantio/Client');
+
+class XCLIENT extends ElephantIOClient
+{
+// var $xheadertext  = ”;
+// var $xheadercolor = array(0,0,200);
+// var $xfootertext  = ‘.’;
+// var $xfooterfont  = PDF_FONT_NAME_MAIN ;
+// var $xfooterfontsize = 8 ;
+
+function Header()
+{
+// list($r, $b, $g) = $this->xheadercolor;
+// $this->setY(10); // shouldn’t be needed due to page margin, but helas, otherwise it’s at the page top
+// $this->SetFillColor($r, $b, $g);
+// $this->SetTextColor(0 , 0, 0);
+// $this->Cell(0,20, ”, 0,1,’C', 1);
+// $this->Text(15,26,$this->xheadertext );
+}
+function Footer()
+{
+// $year = date(‘Y’);
+// $footertext = sprintf($this->xfootertext, $year);
+// $this->SetY(-20);
+// $this->SetTextColor(0, 0, 0);
+// $this->SetFont($this->xfooterfont,”,$this->xfooterfontsize);
+// $this->Cell(0,8, $footertext,’T',1,’C');
+}
+}
 ?>

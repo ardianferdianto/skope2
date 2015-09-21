@@ -106,9 +106,9 @@
   <body>
 
     <div class="site-wrapper animsition">
-
+      <span><p><a href="http://localhost:8888/client.html">Skope Conference</a></p></span>
       <div class="site-wrapper-inner">
-        <button id="connectnode" type="button" class="btn btn-warning btn-lg buttonmikroskop" >
+        <button id="connectnode" type="button" class="btn btn-warning btn-lg connectserver" >
             <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Server
         </button>
         <div class="cover-container <?php if($contentdisplay == 'content'):?>contentdisplayed <?php endif;?>">
@@ -130,7 +130,20 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     
-    
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:3000')
+        
+        
+        $('.connectserver').on("click",function(){
+          socket.emit('chatMessage', 'aku','tes');
+          $.notify("connected to server","success");
+        });
+        socket.on('chatMessage', function(from, msg){
+          $.notify("Message From "+from+" : "+msg,"success");
+          //$('#messages').append('<li><b style="color:' + color + '">' + from + '</b>: ' + msg + '</li>');
+        });
+    </script>
     <script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $( document ).on( "click", ".buttonmikroskop", function(e) {

@@ -6,5 +6,4 @@
 
     <?php
     	//use Client as ElephantIOClient;
-    	App::import('Vendor','xclient');
     ?>
