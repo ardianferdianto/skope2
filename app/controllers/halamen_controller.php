@@ -3,7 +3,6 @@ class HalamenController extends AppController {
 
 	var $name = 'Halamen';
 	var $helpers = array('Html', 'Form');
-	
 	function beforeFilter() {
 	    parent::beforeFilter();
 		//$this->Auth->allow('logout','__getlic','__ceklicense','login');
@@ -23,6 +22,12 @@ class HalamenController extends AppController {
 	function home(){
 		$variabelsidebar = 'taufiq keren';
 		$this->set('variabelsidebar',$variabelsidebar);
+	}
+	function tes_node(){
+		$this->layout = 'default_node';
+	}
+	function skope_conference(){
+		$this->layout = 'default_server';
 	}
 
 	function bikin(){

@@ -42,4 +42,5 @@
  */
 //EOF
 App::import('Vendor', 'Spreadsheet_Excel_Reader', array('file' => 'excelreader/reader.php'));
+App::import('Vendor','elephantio/Client');
 ?>

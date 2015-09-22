@@ -50,7 +50,6 @@ $array = explode('/',$fullPath); $count = count($array);
 $pth=$array[$count-6];
 $url = $_SERVER['REQUEST_URI']; //returns the current URL
 $parts = explode('/',$url);
-//echo $parts[1];
 
 $config = array(
 

@@ -354,7 +354,7 @@ function req(){
 
           icon = '<span class="icon file f-'+fileType+'">.'+fileType+'</span>';
           if(fileType==='pdf'){
-            var pth="<?php echo $this->webroot."cf/"; ?>"+f.path;
+            var pth="<?php echo $this->webroot."source/"; ?>"+f.path;
             var file = $('<li class="files"><a title="'+ f.path +'" data-pathpdf="'+pth+'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
           }else{
             var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');  
