@@ -62,6 +62,7 @@
     </script>
     <script src="<?php echo $this->webroot;?>js/jquery.animsition.min.js"></script>
     <script src="<?php echo $this->webroot;?>js/jquery.transit.min.js"></script>
+    <script src="<?php echo $this->webroot;?>js/notify.min.js"></script>
     
     <script type="text/javascript">
     $(document).ready(function() {
@@ -126,7 +127,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    
+    <!--<script src="http://192.168.1.132:3000/socket.io/socket.io.js"></script>
+    <script>
+        var socket=io('http://192.168.1.132:3000')
+
+        socket.on('chatMessage',function(from,msg){
+        $.notify("Message From "+from+" : "+msg,"success");
+        })
+    </script>-->
     
     <script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
     <script type="text/javascript">
