@@ -640,6 +640,7 @@ class HalamenController extends AppController {
 	}
 
 	function showmikro_gambar(){
+
 		$this->layout = 'default_iframe';
 	}
 
@@ -671,6 +672,12 @@ class HalamenController extends AppController {
 		}
 		$this->set('urlimage',$fileName);
 		$this->layout = 'default_blank';
+	}
+
+	function editimagemikro(){
+		$imageurl=$this->params['url']['filename']; //get keyword from querystring//
+		$this->set('imageurl',$imageurl);
+		$this->layout = 'default_blank';	
 	}
 	function download($id){
 		$conditions = array('conditions'=>array('Halaman.lesson_id'=>$id),'order' => array('Halaman.order' => 'ASC'));

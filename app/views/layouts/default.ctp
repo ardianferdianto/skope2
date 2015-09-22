@@ -43,7 +43,7 @@
       echo $html->css('bootstrap-colorselector.css');
 
       echo $javascript->link('modernizr.custom.js'); 
-      echo $javascript->link('jquery-2.1.4.min.js');
+      echo $javascript->link('jquery.1.11.3.js');
       echo $javascript->link('jquery.tooltipster.min.js');
       echo $javascript->link('bootstrap-colorselector.js');
       echo $javascript->link('ckeditor/ckeditor.js');
@@ -107,11 +107,11 @@
   <body>
 
     <div class="site-wrapper animsition">
-      <span><p><a href="http://localhost:8888/client.html">Skope Conference</a></p></span>
+      <!--<span><p><a href="http://localhost:8888/client.html">Skope Conference</a></p></span>-->
       <div class="site-wrapper-inner">
-        <button id="connectnode" type="button" class="btn btn-warning btn-lg connectserver" >
+        <!--<button id="connectnode" type="button" class="btn btn-warning btn-lg connectserver" >
             <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Server
-        </button>
+        </button>-->
         <div class="cover-container <?php if($contentdisplay == 'content'):?>contentdisplayed <?php endif;?>">
           
           <?php echo $content_for_layout;?>

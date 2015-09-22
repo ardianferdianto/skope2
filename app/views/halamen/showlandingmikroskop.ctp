@@ -27,8 +27,10 @@ $varrecorder = uniqid();
         <br/>
         <button type="button" class="btn btn-primary insertgambarmikroskop" style="display:none;">Masukkan Gambar</button>
 
-        <script>
+        <button type="button" class="btn btn-primary" id="anotegambarmikroskop" style="display:none;" data-urlimage="">Anotasi Gambar</button>
 
+        <script>
+        
         var player = videojs("myImage",
         {
             controls: true,
@@ -67,6 +69,8 @@ $varrecorder = uniqid();
         player.on('startRecord', function()
         {
             $('.insertgambarmikroskop').hide();
+            $('.anotegambarmikroskop').hide();
+            
             /*$.ajax({
               type: "GET",
               url: '<?php echo $this->webroot;?>halamen/saveimage',
@@ -92,7 +96,15 @@ $varrecorder = uniqid();
                 data: {image:player.recordedData},
                 success: function(data){ 
                     $('.insertgambarmikroskop').show();
+                    $('#anotegambarmikroskop').show();
+                    
                     datatoinsert = data;
+                    $('#anotegambarmikroskop').attr('data-urlimage','<?php echo $this->webroot;?>halamen/editimagemikro?filename='+data);
+                    //$( "#showgambarmikroskop button#anotegambarmikroskop" ).data( "urlimage", 52 );
+
+                    //$('#showgambarmikroskop button#anotegambarmikroskop').data('urlimage','asdjasdhasdhjasdjhasdajsdj');
+                    alert(datatoinsert);
+                    
                     
                     
                 }
@@ -252,6 +264,23 @@ $(document).on('click', '#gambar_choosed',function(e){
   $('#showgambarmikroskop').fadeIn();
   return false;
 });
+
+$(document).on('click', '#anotegambarmikroskop',function(e){
+    e.preventDefault(); // avoids calling preview.php
+    var Href = $(this).data('urlimage');
+
+    $.fancybox.open({
+        href: Href,
+        type: 'iframe',
+        padding: 5
+    })
+
+    return false;
+});
+
+
+
+
 
 
 $(document).on('click', '#video_choosed',function(e){
