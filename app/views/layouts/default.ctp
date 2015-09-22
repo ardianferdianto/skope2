@@ -43,7 +43,7 @@
       echo $html->css('bootstrap-colorselector.css');
 
       echo $javascript->link('modernizr.custom.js'); 
-      echo $javascript->link('jquery.1.11.3.js');
+      echo $javascript->link('jquery-2.1.4.min.js');
       echo $javascript->link('jquery.tooltipster.min.js');
       echo $javascript->link('bootstrap-colorselector.js');
       echo $javascript->link('ckeditor/ckeditor.js');
@@ -173,6 +173,7 @@
         },
         beforeClose : function(){
           $('#mikroskoppage').remove();
+          $(window).trigger('fancyboxBeforeClose');
           //$('#mikroskoppage').html('');
         }
         //href: "<?php echo $this->webroot;?>halamen/showlandingmikroskop"

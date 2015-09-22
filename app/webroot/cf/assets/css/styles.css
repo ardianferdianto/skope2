@@ -37,6 +37,8 @@ div#pdf{
 	max-width:1340px;
 	position: relative;
 	margin: 30px auto 50px;
+	max-height: 600px;
+	overflow-y:scroll;
 }
 
 @media all and (max-width: 965px) {

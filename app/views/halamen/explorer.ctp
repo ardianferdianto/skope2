@@ -17,11 +17,21 @@
   // Start by fetching the file data from scan.php with an AJAX request
 
 });
-$('ul.data').on('click', 'a.files', function () {
+$('ul.data').on('click', 'a.files', function (e) {
+  e.preventDefault();
   $('#pdf').show('slide');
   $('li.files').hide();
-  var path_fix=$(this).data('pathpdf');
-  $('#pdf').empty().append('<iframe width="100%" height="100%" name="plugin" src="'+path_fix+'" type="application/pdf"></iframe>');
+
+  var filetype = $(this).data('filetype');
+  if(filetype == 'pdf'){
+    var path_fix=$(this).data('pathpdf');
+    $('#pdf').empty().append('<iframe width="100%" height="100%" name="plugin" src="'+path_fix+'" type="application/pdf"></iframe>');
+  }else{
+    var path_fix=$(this).data('path');
+    $('#pdf').empty().append('<iframe width="100%" height="100%" name="plugin" src="'+path_fix+'" type="application/pdf"></iframe>');
+  }
+  return false;
+
   
 });
                         
@@ -355,9 +365,10 @@ function req(){
           icon = '<span class="icon file f-'+fileType+'">.'+fileType+'</span>';
           if(fileType==='pdf'){
             var pth="<?php echo $this->webroot."source/"; ?>"+f.path;
-            var file = $('<li class="files"><a title="'+ f.path +'" data-pathpdf="'+pth+'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
+            var file = $('<li class="files"><a title="'+ f.path +'" data-filetype="'+fileType+'" data-pathpdf="'+pth+'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
           }else{
-            var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');  
+            var pth="<?php echo $this->webroot."source/"; ?>"+f.path;
+            var file = $('<li class="files"><a href="'+ f.path+'" data-path="'+pth+'" data-filetype="'+fileType+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');  
           }
           var pdfcont=$('<div id="pdf" style="display:none;"></div>');
           pdfcont.appendTo(fileList);

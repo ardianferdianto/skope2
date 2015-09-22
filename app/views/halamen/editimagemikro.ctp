@@ -1,84 +1,115 @@
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>css/draw/canvas_style.css">
-    <?php echo $javascript->link('jquery-2.1.4.min.js');?>
-    <?php echo $javascript->link('jquery-ui.min.js');?>
-    
-    <script type="text/javascript" src="<?php echo $this->webroot;?>js/draw/sketch.js"></script>
-    <div id="SketchTools">
-        <!-- Basic tools -->
-        <a href="#SketchPad" data-color="#000000" title="Black"><img src="<?php echo $this->webroot?>images/draw/black_icon.png" alt="Black"/></a>
-        <a href="#SketchPad" data-color="#ff0000" title="Red"><img src="<?php echo $this->webroot?>images/draw/red_icon.png" alt="Red"/></a>
-        <a href="#SketchPad" data-color="#00ff00" title="Green"><img src="<?php echo $this->webroot?>images/draw/green_icon.png" alt="Green"/></a>
-        <a href="#SketchPad" data-color="#0000ff" title="Blue"><img src="<?php echo $this->webroot?>images/draw/blue_icon.png" alt="Blue"/></a>
-        <a href="#SketchPad" data-color="#ffff00" title="Yellow"><img src="<?php echo $this->webroot?>images/draw/yellow_icon.png" alt="Yellow"/></a>
-        <a href="#SketchPad" data-color="#00ffff" title="Cyan"><img src="<?php echo $this->webroot?>images/draw/cyan_icon.png" alt="Cyan"/></a>
-        <br/>
-        <!-- Advanced colors -->
-        <a href="#SketchPad" data-color="#e74c3c" title="Alizarin"><img src="<?php echo $this->webroot?>images/draw/alizarin_icon.png" alt="Alizarin"/></a>
-        <a href="#SketchPad" data-color="#c0392b" title="Pomegrante"><img src="<?php echo $this->webroot?>images/draw/pomegrante_icon.png" alt="Pomegrante"/></a>
-        <a href="#SketchPad" data-color="#2ecc71" title="Emerald"><img src="<?php echo $this->webroot?>images/draw/emerald_icon.png" alt="Emerald"/></a>
-        <a href="#SketchPad" data-color="#1abc9c" title="Torquoise"><img src="<?php echo $this->webroot?>images/draw/torquoise_icon.png" alt="Torquoise"/></a>
-        <a href="#SketchPad" data-color="#3498db" title="Peter River"><img src="<?php echo $this->webroot?>images/draw/peterriver_icon.png" alt="Peter River"/></a>
-        <a href="#SketchPad" data-color="#9b59b6" title="Amethyst"><img src="<?php echo $this->webroot?>images/draw/amethyst_icon.png" alt="Amethyst"/></a>
-        <a href="#SketchPad" data-color="#f1c40f" title="Sun Flower"><img src="<?php echo $this->webroot?>images/draw/sunflower_icon.png" alt="Sun Flower"/></a>
-        <a href="#SketchPad" data-color="#f39c12" title="Orange"><img src="<?php echo $this->webroot?>images/draw/orange_icon.png" alt="Orange"/></a>
-        <br/>
-        <a href="#SketchPad" data-color="#ecf0f1" title="Clouds"><img src="<?php echo $this->webroot?>images/draw/clouds_icon.png" alt="Clouds"/></a>
-        <a href="#SketchPad" data-color="#bdc3c7" title="Silver"><img src="<?php echo $this->webroot?>images/draw/silver_icon.png" alt="Silver"/></a>
-        <a href="#SketchPad" data-color="#7f8c8d" title="Asbestos"><img src="<?php echo $this->webroot?>images/draw/asbestos_icon.png" alt="Asbestos"/></a>
-        <a href="#SketchPad" data-color="#34495e" title="Wet Asphalt"><img src="<?php echo $this->webroot?>images/draw/wetasphalt_icon.png" alt="Wet Asphalt"/></a>
-        <a href="#SketchPad" data-color="#ffffff" title="Eraser"><img src="<?php echo $this->webroot?>images/draw/eraser_icon.png" alt="Eraser"/></a>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>css/draw/style.css">
 
-        <a href="#SketchPad" data-tool="eraser" title="Reset">Reset</a>
-        <a href="#SketchPad" data-tool="marker" title="Reset">Aktifkan Marker</a>
 
-        
-        <br/>
-        <!-- Size options -->
-        <a href="#SketchPad" data-size="1"><img src="<?php echo $this->webroot?>images/draw/pencil_icon.png" alt="Pencil"/></a>
-        <a href="#SketchPad" data-size="3"><img src="<?php echo $this->webroot?>images/draw/pen_icon.png" alt="Pen"/></a>
-        <a href="#SketchPad" data-size="5"><img src="<?php echo $this->webroot?>images/draw/stick_icon.png" alt="Stick"/></a>
-        <a href="#SketchPad" data-size="9"><img src="<?php echo $this->webroot?>images/draw/smallbrush_icon.png" alt="Small brush"/></a>
-        <a href="#SketchPad" data-size="15"><img src="<?php echo $this->webroot?>images/draw/mediumbrush_icon.png" alt="Medium brush"/></a>
-        <a href="#SketchPad" data-size="30"><img src="<?php echo $this->webroot?>images/draw/bigbrush_icon.png" alt="Big brush"/></a>
-        <a href="#SketchPad" data-size="60"><img src="<?php echo $this->webroot?>images/draw/bucket_icon.png" alt="Huge bucket"/></a>
-        <br/>
-        <a href="#SketchPad" data-download='png' id="DownloadPng">Download .PNG</a>
-        <br/>
-    </div>
-    <div id="SketchPadArea">
-    <span class="draggable">*<input type="text " id="" class="resizable ui-state-active" value="This is input box"></span>
-    <canvas id="SketchPad" width="450" height="300" >
-    </div>
+<div id="containercanvas">
+<canvas id="myCanvas" width="320" height="240"></canvas>
+</div>
+<div class="controls">
+<ul>
 
-        
-    </canvas>
+<li class="white reset"><span>RESET</span></li>
+<li class="red colorlist selected"></li>
+<li class="blue colorlist"></li>
+<li class="yellow colorlist"></li>
+<li class="black colorlist"></li>
 
-    <script type="text/javascript">
-    var canvas = document.getElementById('SketchPad'),
-    context = canvas.getContext('2d');
+</ul>
+<button class="reveal" id="revealColorSelect">Warna lain</button>
+<button class="reveal" id="download">Masukkan Gambar</button>
+<div id="colorSelect"> <span id="newColor"></span>
+<div class="sliders">
+<p>
+<label for="red">Red</label>
+<input id="red" name="red" type="range" min=0 max=255 value=0>
+</p>
+<p>
+<label for="green">Green</label>
+<input id="green" name="green" type="range" min=0 max=255 value=0>
+</p>
+<p>
+<label for="blue">Blue</label>
+<input id="blue" name="blue" type="range" min=0 max=255 value=0>
+</p>
+</div>
+<div>
+<button id="addNewColor">Tambah Warna</button>
+</div>
+</div>
+</div>
 
-    make_base();
+<script src="<?php echo $this->webroot;?>js/draw/app.js" type="text/javascript" charset="utf-8"></script>
 
-    function make_base()
-    {
-      base_image = new Image();
-      base_image.src = '<?php echo $this->webroot;?>files/image_mikroskop/<?php echo $imageurl;?>';
-      base_image.onload = function(){
-        context.drawImage(base_image, 100, 100);
-      }
+<script type="text/javascript">
+
+var context = $canvas[0].getContext("2d");
+
+function loadImage(){
+    base_image = new Image();
+    base_image.src = 'http://localhost:8888/skope2/files/image_mikroskop/<?php echo $imageurl;?>';
+    base_image.onload = function(){
+      context.drawImage(base_image, 0, 0);
+      // set to draw behind current content
     }
-   
-    
+}
+loadImage();
+
+$(".reset").on("click", function(){
+  var canvas = document.getElementById('myCanvas');
+  
+  console.log('clear');
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  loadImage();
+});
+
+
+$("#download").click(function(){
+  
+   var c = document.getElementsByTagName("canvas")[0];
+
+  mime = "image/png";
+  var dataUrl = c.toDataURL(mime);
+  
+
+    $.ajax({
+        type: "POST",
+        url: '<?php echo $this->webroot;?>halamen/saveimage',
+        data: {image:dataUrl},
+        success: function(data){ 
+            //$('.insertgambarmikroskop').show();
+            //$('#anotegambarmikroskop').show();
+            
+            datatoinsert = data;
+            //$('#anotegambarmikroskop').attr('data-urlimage','<?php echo $this->webroot;?>halamen/editimagemikro?filename='+data);
+            //$( "#showgambarmikroskop button#anotegambarmikroskop" ).data( "urlimage", 52 );
+
+            //$('#showgambarmikroskop button#anotegambarmikroskop').data('urlimage','asdjasdhasdhjasdjhasdajsdj');
+            inserttoCKEditor(datatoinsert);
+            //alert(datatoinsert);
+            
+            
+            
+        }
+    });
+  //window.open(c.toDataURL(mime));
+  //window.open(dataUrl, "toDataURL() image", "width=500, height=300");
+  
+});
+
+function inserttoCKEditor(imagefilename){
+
+    var imageinserted = imagefilename;
+    //$.fancybox.close();
+    var html = '<img src="<?php echo $this->webroot;?>files/image_mikroskop/'+imageinserted+'" width="200"/>';
+    var oEditor = CKEDITOR.instances.rich_ed;
+    console.log(oEditor);
+    CKEDITOR.instances.rich_ed.insertHtml(html);
 
     
-      $(function() {
-        $('#SketchPad').sketch();
-      });
-    $(function() {
-        $( ".resizable" ).resizable({
-            containment: "#SketchPad"
-        });
-        $( ".draggable" ).draggable({containment: "#SketchPad"});
-    });
-    </script>
-        
+    $.fancybox.close();
+    
+    return false;
+    
+}
+
+</script>
