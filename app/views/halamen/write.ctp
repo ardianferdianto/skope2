@@ -124,6 +124,8 @@
                 //$('#step1_createnew').html(data);
                 $('#edit') .show();
                 $('#delete') .show();
+                
+                cek_pages();
                 //$('#step1_createnew').fadeIn("slow");
             }
 
