@@ -27,9 +27,50 @@ $varrecorder = uniqid();
         <br/>
         <button type="button" class="btn btn-primary insertgambarmikroskop" style="display:none;">Masukkan Gambar</button>
 
-        <script>
+        <button type="button" class="btn btn-primary" id="anotegambarmikroskop" style="display:none;" data-urlimage="">Anotasi Gambar</button>
 
-        var player = videojs("myImage",
+        <script>
+        
+        
+
+
+        </script>
+
+      </div>
+
+      <div id="showvideomikroskop" style="display:none;">
+
+        <video id="myRecordVideo" class="video-js vjs-default-skin" style="margin-left:20px;"></video>
+        <br/>
+        <button type="button" class="btn btn-primary insertvideomikroskop" style="display:none;">Selesai</button>
+
+        <script>
+        
+        
+
+        </script>
+
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$(window).on('fancyboxBeforeClose', function(){
+    if($('#showgambarmikroskop').is(':visible')) {
+    var oldPlayer2 = document.getElementById('myImage');
+    videojs(oldPlayer2).dispose(); 
+    }
+    console.log('dtetetette');
+});
+
+$(document).on('click', '#gambar_choosed',function(e){
+  e.preventDefault(); // avoids calling preview.php
+
+  $('.optionmikroskop').fadeOut();
+  $('#showgambarmikroskop').fadeIn();
+
+  var player = videojs("myImage",
         {
             controls: true,
             width: 320,
@@ -67,6 +108,8 @@ $varrecorder = uniqid();
         player.on('startRecord', function()
         {
             $('.insertgambarmikroskop').hide();
+            $('.anotegambarmikroskop').hide();
+            
             /*$.ajax({
               type: "GET",
               url: '<?php echo $this->webroot;?>halamen/saveimage',
@@ -92,7 +135,15 @@ $varrecorder = uniqid();
                 data: {image:player.recordedData},
                 success: function(data){ 
                     $('.insertgambarmikroskop').show();
+                    $('#anotegambarmikroskop').show();
+                    
                     datatoinsert = data;
+                    $('#anotegambarmikroskop').attr('data-urlimage','<?php echo $this->webroot;?>halamen/editimagemikro?filename='+data);
+                    //$( "#showgambarmikroskop button#anotegambarmikroskop" ).data( "urlimage", 52 );
+
+                    //$('#showgambarmikroskop button#anotegambarmikroskop').data('urlimage','asdjasdhasdhjasdjhasdajsdj');
+                    //alert(datatoinsert);
+                    
                     
                     
                 }
@@ -110,7 +161,7 @@ $varrecorder = uniqid();
             console.log(oEditor);
             CKEDITOR.instances.rich_ed.insertHtml(html);
 
-            var oldPlayer = document.getElementById('myImage_html5_api');
+            var oldPlayer = document.getElementById('myImage');
             videojs(oldPlayer).dispose(); 
             
             $.fancybox.close();
@@ -118,19 +169,64 @@ $varrecorder = uniqid();
             return false;
         });
       
+  return false;
+});
+
+$(document).on('click', '#anotegambarmikroskop',function(e){
+
+    e.preventDefault(); // avoids calling preview.php
+
+    var oldPlayer = document.getElementById('myImage');
+    videojs(oldPlayer).dispose(); 
+
+    var Href = $(this).data('urlimage');
+
+    $.fancybox({
+        type: 'ajax',
+        width:650,
+        height:450,
+        autoSize: false,
+        padding:0,
+        title   : 'CONNECT MIKROSKOP',
+        content: '<div id="anotationcontainer"></div>',
+        beforeShow : function(){
+        $.ajax({
+          type: "GET",
+          dataType: "html",
+          cache: false,
+          url: Href, // preview.php
+          //data: $("#postp").serializeArray(), // all form fields
+          success: function (data) {
+            $('#anotationcontainer').append(data);
+
+            
+            
+          } // success
+        }); // ajax
+        },
+        beforeClose : function(){
+            $('#anotationcontainer').remove();
+            var oldPlayer = document.getElementById('myImage');
+            videojs(oldPlayer).dispose(); 
+            //$('#mikroskoppage').html('');
+        }
+    });
+    return false;
+});
 
 
-        </script>
 
-      </div>
 
-      <div id="showvideomikroskop" style="display:none;">
 
-        <video id="myRecordVideo" class="video-js vjs-default-skin" style="margin-left:20px;"></video>
-        <br/>
-        <button type="button" class="btn btn-primary insertvideomikroskop" style="display:none;">Selesai</button>
 
-        <script>
+$(document).on('click', '#video_choosed',function(e){
+  e.preventDefault(); // avoids calling preview.php
+
+  $('.optionmikroskop').fadeOut();
+  $('#showvideomikroskop').fadeIn();
+
+
+
         var videotoinsert = '';
         var randnumber = '';
         var playerVideo = videojs("myRecordVideo",
@@ -210,9 +306,9 @@ $varrecorder = uniqid();
             e.preventDefault();
             var imageinserted = videotoinsert;
             //$.fancybox.close();
-            var videoInserted = '<video id="really-cool-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264"><source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"></video>';
+            var videoInserted = '<video id="really-cool-video" class="video-js vjs-default-skin" controls preload="auto" ><source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"></video>';
 
-            var toencode ='<cke:video controls="controls" poster="http://localhost/skope/app/webroot/source/6.png" width="555" height="408" id="video<?php echo $varrecorder;?>"><cke:source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"><cke:source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"></cke:source></cke:source></cke:video>';
+            var toencode ='<cke:video controls="controls" poster="http://localhost/skope/app/webroot/source/6.png" id="video<?php echo $varrecorder;?>"><cke:source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"><cke:source src="<?php echo $this->webroot;?>files/video_mikroskop/'+imageinserted+'" type="video/webm"></cke:source></cke:source></cke:video>';
 
             var encoded = encodeURIComponent(toencode);
             
@@ -237,28 +333,6 @@ $varrecorder = uniqid();
 
             return false;
         });
-
-        </script>
-
-      </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-$(document).on('click', '#gambar_choosed',function(e){
-  e.preventDefault(); // avoids calling preview.php
-
-  $('.optionmikroskop').fadeOut();
-  $('#showgambarmikroskop').fadeIn();
-  return false;
-});
-
-
-$(document).on('click', '#video_choosed',function(e){
-  e.preventDefault(); // avoids calling preview.php
-
-  $('.optionmikroskop').fadeOut();
-  $('#showvideomikroskop').fadeIn();
   return false;
 });
 </script>

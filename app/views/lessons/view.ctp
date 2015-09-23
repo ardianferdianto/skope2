@@ -48,7 +48,7 @@ foreach ($pagesbook as $item): ?>
 		<div class="contenttextbook nano">
 			<div class="nano-content">
 				<div class="contentareablock">
-				<h2 style="font-size:37px;"><?php echo $item['Halaman']['deskripsi_halaman'];?></h2>
+				<h2 style="font-size:33px;background-color:#66CAE8;color:#fff;padding:10px;"><?php echo $item['Halaman']['deskripsi_halaman'];?></h2>
 				<?php echo $item['Halaman']['content'];?>
 			</div>
 			</div>
