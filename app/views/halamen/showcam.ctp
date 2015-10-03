@@ -1,50 +1,137 @@
-		
-<div id="showcam">
+<title>Audio+Video+TextChat+FileSharing</title>
+<h1>Audio+Video+TextChat+FileSharing</h1>
+<style>
+video {
+    object-fit: fill;
+    width: 50%;
+}
 
-	<img src="<?php echo $this->webroot;?>js/ScriptCam-master/webcamlogo.png" style="vertical-align:text-top"/>
-	<select id="cameraNames" size="1" onChange="changeCamera()" style="width:100%;font-size:10px;height:25px;">
-	</select>
+button, input, select {
+    font-family: Myriad, Arial, Verdana;
+    font-weight: normal;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 2px 4px;
+    text-decoration: none;
+    color: rgb(27, 26, 26);
+    display: inline-block;
+    box-shadow: rgb(255, 255, 255) 1px 1px 0px 0px inset;
+    text-shadow: none;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.05, rgb(241, 241, 241)), to(rgb(230, 230, 230)));
+    font-size: 16px;
+    border: 1px solid red;
+    outline:none;
+}
+button:active, input:active, select:active, button:focus, input:focus, select:focus, input[type=text] {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(5%, rgb(221, 221, 221)), to(rgb(250, 250, 250)));
+    border: 1px solid rgb(142, 142, 142);
+}
+
+button[disabled], input[disabled], select[disabled] {
+    background: rgb(249, 249, 249);
+    border: 1px solid rgb(218, 207, 207);
+    color: rgb(197, 189, 189);
+}
+</style>
+<hr>
+<button id="open-room">Start Server</button>
+<hr>
+<div id="chat-container">
+    <br>
+    <div id="video_server"></div>
+    <div id="file-container"></div>
+    <div class="chat-output"></div>
 </div>
+<hr>
+
+<script>
+connection.enableFileSharing = true; // by default, it is "false".
 
 
-		<script language="JavaScript" src="<?php echo $this->webroot;?>js/jquery.swfobject2.2.js"></script>
-		<script language="JavaScript" src="<?php echo $this->webroot;?>js/ScriptCam-master/scriptcam.js"></script>
-		<script language="JavaScript"> 
-			$(document).ready(function() {
-				$("#showcam").scriptcam({
-					showMicrophoneErrors:false,
-					onError:onError,
-					cornerRadius:20,
-					cornerColor:'e3e5e2',
-					onWebcamReady:onWebcamReady,
-					width: 640,
-       				height: 480,
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: true,
+    OfferToReceiveVideo: true
+};
+// ......................................................
+// .......................UI Code........................
+// ......................................................
+document.getElementById('open-room').onclick = function() {
+    this.disabled = true;
+/*    connection.extra = {
+        'session-name': document.getElementById('room-id').value,
+        'fullName': 'something special'
+    };*/
 
-					onPictureAsBase64:base64_tofield_and_image
-				});
-			});
-			function base64_tofield() {
-				$('#formfield').val($.scriptcam.getFrameAsBase64());
-			};
-			function base64_toimage() {
-				$('#image').attr("src","data:image/png;base64,"+$.scriptcam.getFrameAsBase64());
-			};
-			function base64_tofield_and_image(b64) {
-				$('#formfield').val(b64);
-				$('#image').attr("src","data:image/png;base64,"+b64);
-			};
-			function changeCamera() {
-				$.scriptcam.changeCamera($('#cameraNames').val());
-			}
-			function onError(errorId,errorMsg) {
-				$( "#btn1" ).attr( "disabled", true );
-				$( "#btn2" ).attr( "disabled", true );
-				alert(errorMsg);
-			}			
-			function onWebcamReady(cameraNames,camera,microphoneNames,microphone,volume) {
-				$.each(cameraNames, function(index, text) {
-					$('#cameraNames').append( $('<option></option>').val(index).html(text) )
-				}); 
-				$('#cameraNames').val(camera);
-			}
-		</script> 
+	//socket.emit('custom-event', { test: 'data' });
+    //socket.emit('test', 'ada');
+    connection.connectSocket(function(socket) {
+	    connection.session = {
+		    audio: true,
+		    video: true,
+		    data : true,
+		    oneway: true
+		};
+
+		connection.open('server_room2');
+	    //connection.open(document.getElementById('room-id').value);
+	});
+};
+
+// ......................................................
+// ................FileSharing/TextChat Code.............
+// ......................................................
+
+
+
+/*document.getElementById('input-text-chat').onkeyup = function(e) {
+    if(e.keyCode != 13) return;
+    
+    // removing trailing/leading whitespace
+    this.value = this.value.replace(/^\s+|\s+$/g, '');
+    if (!this.value.length) return;
+    
+    connection.send(this.value);
+    appendDIV(this.value);
+    this.value =  '';
+};*/
+
+var chatContainer = document.querySelector('.chat-output');
+
+function appendDIV(event) {
+    var div = document.createElement('div');
+    div.innerHTML = event.data || event;
+    chatContainer.insertBefore(div, chatContainer.firstChild);
+    div.tabIndex = 0; div.focus();
+    
+    document.getElementById('input-text-chat').focus();
+}
+
+// ......................................................
+// ..................RTCMultiConnection Code.............
+// ......................................................
+
+//var connection = new RTCMultiConnection();
+
+
+
+connection.onstream = function(event) {
+    //document.body.appendChild(event.mediaElement);
+    $('#video_server').empty().append(event.mediaElement);
+};
+
+connection.onmessage = appendDIV;
+connection.filesContainer = document.getElementById('file-container');
+
+
+//connection.connect();
+connection.onUserStatusChanged = function(event) {
+	console.log(event.userid);
+};
+var socket = connection.getSocket();
+//socket.emit('custom-event', 'hi there');
+socket.on('custom-event', function(message) {
+    console.log(message);
+});
+</script>

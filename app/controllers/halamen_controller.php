@@ -23,6 +23,16 @@ class HalamenController extends AppController {
 		$variabelsidebar = 'taufiq keren';
 		$this->set('variabelsidebar',$variabelsidebar);
 	}
+	function home2(){
+		$variabelsidebar = 'taufiq keren';
+		$this->set('variabelsidebar',$variabelsidebar);
+		$this->layout = 'default_client';
+	}
+
+	function showcam_client(){
+		$this->layout = 'default_client';
+	}
+	
 	function tes_node(){
 		$this->layout = 'default_node';
 	}
