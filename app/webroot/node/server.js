@@ -1,8 +1,8 @@
 var fs = require('fs');
 //var app = require('express')();
-//var http = require('http').Server(app);
+var http = require('http').Server(app);
 //var io = require('socket.io')(http);
-//var path = require('path');
+var path = require('path');
 
 // Initialize appication with route / (that means root of the application)
 

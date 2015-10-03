@@ -102,13 +102,73 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="<?php echo $this->webroot;?>skope_node/RTCMultiConnection.js"></script>
+    <script src="<?php echo $this->webroot;?>skope_node/dev/FileBufferReader.js"></script>
+
+    <!-- socket.io for signaling -->
+    <script src="http://192.168.1.132:9001/socket.io/socket.io.js"></script>
+    <script>
+
+        var connection = new RTCMultiConnection();
+        connection.enableFileSharing = true; // by default, it is "false".
+            $('#join-room').on("click", function(e) {
+            connection.join('room_server');
+        });
+        function submitfunction(){
+          //var from = $('#user').val();
+          var message = $('#m').val();
+          if(message != '') {
+            connection.send(message);
+          }
+          $('#m').val('').focus();
+            return false;
+        }
+        function appendDIV(event) {
+            $.notify("Message from server "+event.data || event);
+        }
+        $(document).ready(function() {
+          connection.session = {
+              data : true
+          };
+          connection.sdpConstraints.mandatory = {
+              OfferToReceiveAudio: false,
+              OfferToReceiveVideo: false
+          };
+          connection.onmessage = appendDIV;
+          connection.connectSocket(function(socket) {
+              socket.on('custom-message', function(message) {
+                  console.log(message);
+              });
+              connection.sdpConstraints.mandatory = {
+                  OfferToReceiveAudio: false,
+                  OfferToReceiveVideo: false
+              };
+              socket.emit('custom-message', 'server_room');
+              connection.open('server_room');
+          });
+
+          document.getElementById('share-file').onclick = function() {
+              var fileSelector = new FileSelector();
+              fileSelector.selectSingleFile(function(file) {
+                  connection.send(file);
+              });
+          };
+        });
+        connection.onopen = function() {
+            document.getElementById('share-file').disabled      = false;
+            //socket.emit('custom-event', 'his there');
+        };
+    </script>
   </head>
 
   <body id="<?php if($contentdisplay == 'content'):?>contentdisplayed<?php endif;?>">
 
     <div class="site-wrapper animsition">
+
       <!--<span><p><a href="http://localhost:8888/client.html">Skope Conference</a></p></span>-->
       <div class="site-wrapper-inner container-fluid">
+
         <!--<button id="connectnode" type="button" class="btn btn-warning btn-lg connectserver" >
             <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Server
         </button>-->
@@ -125,7 +185,10 @@
             </div> -->
           </div>
         </div>
-
+        <form id="form" action="" onsubmit="return submitfunction();" >
+          <input type="hidden" id="user" value="" /><input id="m" autocomplete="off" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/>
+          <button id="share-file" disabled>Share File</button>
+        </form>
       </div>
 
     </div>
@@ -136,20 +199,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     
-    <!--<script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io('http://localhost:3000')
-        
-        
-        $('.connectserver').on("click",function(){
-          socket.emit('chatMessage', 'aku','tes');
-          $.notify("connected to server","success");
-        });
-        socket.on('chatMessage', function(from, msg){
-          $.notify("Message From "+from+" : "+msg,"success");
-          //$('#messages').append('<li><b style="color:' + color + '">' + from + '</b>: ' + msg + '</li>');
-        });
-    </script>-->
 
     <script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -180,7 +229,6 @@
           $(window).trigger('fancyboxBeforeClose');
           //$('#mikroskoppage').html('');
         }
-        //href: "<?php echo $this->webroot;?>halamen/showlandingmikroskop"
         
       }); //fancybox
     });
