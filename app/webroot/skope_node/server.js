@@ -68,7 +68,7 @@ if (useFakeKeys) {
     app = server.createServer(options, serverHandler);
 } else app = server.createServer(serverHandler);
 
-app = app.listen(process.env.PORT || 9001, process.env.IP || "192.168.1.132", function() {
+app = app.listen(process.env.PORT || 9001, process.env.IP || "localhost", function() {
     var addr = app.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
 });
