@@ -1,9 +1,13 @@
+<div id="anotationcontainer">
 <?php 
 $varrecorder = uniqid();
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>css/draw/style.css">
 
 <style type="text/css">
+body{
+  background: #384047;
+}
 .draggable { 
   width: 20px; height: 20px; padding: 0.5em; 
   position: absolute;
@@ -142,7 +146,7 @@ function loadImage(){
 
     
     base_image = new Image();
-    base_image.src = '<?php echo $this->webroot;?>files/image_mikroskop/<?php echo $imageurl;?>';
+    base_image.src = '<?php echo $imageurl;?>';
 
     base_image.onload = function() {
         context.drawImage(base_image, 0, 0);
@@ -301,3 +305,4 @@ $('body').on('click', '.colortextavailable', function () {
 
 
 </script>
+</div>

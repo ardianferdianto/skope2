@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="<?php if($contentdisplay == 'content'):?>contentdisplayed<?php endif;?>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,18 +104,22 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body id="<?php if($contentdisplay == 'content'):?>contentdisplayed<?php endif;?>">
 
     <div class="site-wrapper animsition">
       <!--<span><p><a href="http://localhost:8888/client.html">Skope Conference</a></p></span>-->
-      <div class="site-wrapper-inner">
+      <div class="site-wrapper-inner container-fluid">
         <!--<button id="connectnode" type="button" class="btn btn-warning btn-lg connectserver" >
             <span class="glyphicon glyphicon glyphicon-facetime-video" aria-hidden="true"></span> <br/>Connect Server
         </button>-->
         <div class="cover-container <?php if($contentdisplay == 'content'):?>contentdisplayed <?php endif;?>">
           
           <?php echo $content_for_layout;?>
-                    <div class="mastfoot">
+            <div class="mastfoot">
+              
+              <p> Hak cipta dilindungi undang undang atas nama <br/>PT.Ide Hasama Indonesia</p>
+              <img src="<?php echo $this->webroot?>art/smicro_new/hasama_logo.png">
+              
             <!-- <div class="inner">
               <p>SKOPE dibuat di Indonesia dengan agsfsfgsgasafgsagf.</p>
             </div> -->
@@ -132,7 +136,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <!--<script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
         var socket = io('http://localhost:3000')
         
@@ -145,7 +149,7 @@
           $.notify("Message From "+from+" : "+msg,"success");
           //$('#messages').append('<li><b style="color:' + color + '">' + from + '</b>: ' + msg + '</li>');
         });
-    </script>
+    </script>-->
 
     <script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -180,6 +184,9 @@
         
       }); //fancybox
     });
+    </script>
+    <script type="text/javascript">
+    window.appurlname = <?php echo $urlappname;?>
     </script>
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

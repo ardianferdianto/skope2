@@ -10,6 +10,9 @@ class AppController extends Controller {
 		$this->log("Here: {$this->here}, coming from: " . $this->referer(), LOG_DEBUG);
 		$ckeditorClass = 'CKEDITOR';
 		$this->set('ckeditorClass', $ckeditorClass);
+
+		$urlappname = 'skope2';
+		$this->set('urlappname',$urlappname);
 	    //Configure AuthComponent
 	    /*$this->Auth->authorize = 'actions';
 	    $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');

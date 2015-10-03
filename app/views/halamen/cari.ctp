@@ -10,8 +10,54 @@
 ?>
 
 <?php if(empty($pelajaranId)):?>
-<nav class="navbar navbar-fixed-top" style="margin-top: 10px">
-	<div class="container row center-block">
+<nav class="navbar navbar-fixed-top navbarcaripenelitian">
+	<div href="#" class="mainmenuleft">
+		<span class="glyphicon glyphicon-align-justify icon"></span>
+		<div id="nav_left_stick">
+			<ul>
+				<li>
+					<a href="<?php echo $this->webroot?>halamen/home">
+						<span class="leftmenu_circle">
+							<img style="margin-top: 16px;" class="" src="<?php echo $this->webroot?>art/smicro_new/logo-skope-small.png">
+						</span>
+						<span class="leftmenu_text">Beranda</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="<?php echo $this->webroot?>halamen/createnew" >
+						<span class="leftmenu_circle" style="background:#bd2635;">
+							<img style="margin-top: 16px;" class="" src="<?php echo $this->webroot?>art/smicro_new/create-small.png">
+						</span>
+						<span class="leftmenu_text">Buat <br/>Penelitian</span>
+					</a>
+				</li>
+
+
+				<li>
+					<a href="<?php echo $this->webroot?>halamen/cari" >
+						<span class="leftmenu_circle" style="background:#e7b014;">
+							<img style="margin-top: 16px;" class="" src="<?php echo $this->webroot?>art/smicro_new/browse-small.png">
+						</span>
+						<span class="leftmenu_text">Cari <br/>Penelitian</span>
+					</a>
+				</li>
+
+
+				<li>
+					<a href="<?php echo $this->webroot?>halamen/showcam" >
+						<span class="leftmenu_circle" style="background:#08a6da;">
+							<img style="margin-top: 25px;" class="" src="<?php echo $this->webroot?>art/smicro_new/preview-small.png">
+						</span>
+						<span class="leftmenu_text">Preview <br/>Mikroskop</span>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</a>
+	<img class="logosmallleft" src="<?php echo $this->webroot?>art/smicro_new/logo-skope-small.png">
+	<div class="container row center-block" style="width:1000px">
 
 		<div class="form-group col-xs-3">
 		<?php
@@ -44,14 +90,15 @@
 		<?php echo $form->end()?>
 		</div>
 		
-		<div style="right: 0">
+		<!--<div style="right: 0">
 			<a class="btn btn-success glyphicon glyphicon-home filtering" title="Awal" href="<?php echo $this->webroot; ?>"></a>
 			<a class="btn btn-primary glyphicon glyphicon-plus filtering" title="Buat" href="<?php echo $this->webroot; ?>halamen/createnew"></a>
 			<a class="btn btn-warning glyphicon glyphicon-search filtering" title="Mikroskop" href="<?php echo $this->webroot; ?>halamen/showcam"></a>
-		</div>
+		</div>-->
 
 	</div>
 </nav>
+
 <?php endif;?>
 
 <div id="jplistpaging">
@@ -203,4 +250,37 @@
 			}
 		});
 	});
+	var windowheight = $( window ).height();
+	$( ".mainmenuleft" ).hover(
+		
+	  function() {
+	  	$('#nav_left_stick').css('height',windowheight);
+	    $('#nav_left_stick').transition({ x: '200px' });
+	    
+
+	  }, function() {
+	    $('#nav_left_stick').transition({ x: '0' });
+	  }
+	);
+	$.fx.speeds._default = 200;
+	$.cssEase['bounce'] ='cubic-bezier(0,1,0.5,1.3)';
+	
+
+
+	$( ".leftmenu_circle" ).hover(
+		
+	  function() {
+	  	$(this).transition({ scale: 1.2 }, 200,'bounce');
+	    
+
+	  }, function() {
+	  	$(this).transition({ scale: 1 }, 200,'bounce');
+	    
+	  }
+	);
+
+
+	
+		
+	
 </script>

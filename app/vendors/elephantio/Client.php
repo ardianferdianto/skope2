@@ -55,7 +55,7 @@ class Client
                 $this->engine->keepAlive();
             }
         } catch (SocketException $e) {
-            $this->logger->error('Could not connect to the server', ['exception' => $e]);
+            //$this->logger->error('Could not connect to the server', ['exception' => $e]);
             throw $e;
         }
         return $this;
