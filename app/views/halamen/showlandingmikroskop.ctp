@@ -56,21 +56,16 @@ $varrecorder = uniqid();
 
 <script type="text/javascript">
 
-$(window).on('fancyboxBeforeClose', function(){
-    if($('#showgambarmikroskop').is(':visible')) {
-    var oldPlayer2 = document.getElementById('myImage');
-    videojs(oldPlayer2).dispose(); 
-    }
-    console.log('dtetetette');
-});
 
 $(document).on('click', '#gambar_choosed',function(e){
   e.preventDefault(); // avoids calling preview.php
-
+  var randomNumb = Math.floor((Math.random() * 100) + 1);
   $('.optionmikroskop').fadeOut();
   $('#showgambarmikroskop').fadeIn();
+  $('#showgambarmikroskop #myImage').attr('id','myImage_'+randomNumb);
 
-  var player = videojs("myImage",
+  window.player = videojs("myImage_"+randomNumb,
+
         {
             controls: true,
             width: 320,
@@ -97,15 +92,15 @@ $(document).on('click', '#gambar_choosed',function(e){
         //player.videojs.destroy();
 
         // change player background color
-        player.el().style.backgroundColor = "#6B2DA8";
+        window.player.el().style.backgroundColor = "#6B2DA8";
 
         // error handling
-        player.on('deviceError', function()
+        window.player.on('deviceError', function()
         {
-            console.warn('device error:', player.deviceErrorCode);
+            console.warn('device error:', window.player.deviceErrorCode);
         });
 
-        player.on('startRecord', function()
+        window.player.on('startRecord', function()
         {
             $('.insertgambarmikroskop').hide();
             $('.anotegambarmikroskop').hide();
@@ -123,7 +118,7 @@ $(document).on('click', '#gambar_choosed',function(e){
 
         // snapshot is available
         var datatoinsert = '';
-        player.on('finishRecord', function()
+        window.player.on('finishRecord', function()
         {
             // the blob object contains the image data that
             // can be downloaded by the user, stored on server etc.
@@ -132,7 +127,7 @@ $(document).on('click', '#gambar_choosed',function(e){
             $.ajax({
                 type: "POST",
                 url: '<?php echo $this->webroot;?>halamen/saveimage',
-                data: {image:player.recordedData},
+                data: {image:window.player.recordedData},
                 success: function(data){ 
                     $('.insertgambarmikroskop').show();
                     $('#anotegambarmikroskop').show();
@@ -143,13 +138,10 @@ $(document).on('click', '#gambar_choosed',function(e){
 
                     //$('#showgambarmikroskop button#anotegambarmikroskop').data('urlimage','asdjasdhasdhjasdjhasdajsdj');
                     //alert(datatoinsert);
-                    
-                    
-                    
                 }
             });
 
-            console.log('snapshot ready: ', player.recordedData);
+            console.log('snapshot ready: ', window.player.recordedData);
         });
 
         $('.insertgambarmikroskop').on('click', function(e){
@@ -161,9 +153,6 @@ $(document).on('click', '#gambar_choosed',function(e){
             console.log(oEditor);
             CKEDITOR.instances.rich_ed.insertHtml(html);
 
-            var oldPlayer = document.getElementById('myImage');
-            videojs(oldPlayer).dispose(); 
-            
             $.fancybox.close();
 
             return false;
@@ -176,8 +165,8 @@ $(document).on('click', '#anotegambarmikroskop',function(e){
 
     e.preventDefault(); // avoids calling preview.php
 
-    var oldPlayer = document.getElementById('myImage');
-    videojs(oldPlayer).dispose(); 
+    //var oldPlayer = document.getElementById('myImage');
+    //videojs(oldPlayer).dispose(); 
 
     var Href = $(this).data('urlimage');
 
@@ -197,6 +186,7 @@ $(document).on('click', '#anotegambarmikroskop',function(e){
           url: Href, // preview.php
           //data: $("#postp").serializeArray(), // all form fields
           success: function (data) {
+            $('#anotationcontainer').html('');
             $('#anotationcontainer').append(data);
 
             
@@ -206,8 +196,8 @@ $(document).on('click', '#anotegambarmikroskop',function(e){
         },
         beforeClose : function(){
             $('#anotationcontainer').remove();
-            var oldPlayer = document.getElementById('myImage');
-            videojs(oldPlayer).dispose(); 
+            //var oldPlayer = document.getElementById('myImage');
+            //videojs(oldPlayer).dispose(); 
             //$('#mikroskoppage').html('');
         }
     });
@@ -221,15 +211,18 @@ $(document).on('click', '#anotegambarmikroskop',function(e){
 
 $(document).on('click', '#video_choosed',function(e){
   e.preventDefault(); // avoids calling preview.php
+  var randnumber2 = Math.random().toString(36).substr(2, 9);
+  //var randomNumb2 = Math.floor((Math.random() * 100) + 1);
+  
+  
 
-  $('.optionmikroskop').fadeOut();
-  $('#showvideomikroskop').fadeIn();
-
-
+      $('.optionmikroskop').fadeOut();
+      $('#showvideomikroskop').fadeIn();
+      $('#showvideomikroskop #myRecordVideo').attr('id','myRecordVideo_'+randnumber2);
 
         var videotoinsert = '';
         var randnumber = '';
-        var playerVideo = videojs("myRecordVideo",
+        var playerVideo = videojs("myRecordVideo_"+randnumber2,
         {
             controls: true,
             width: 320,
@@ -313,7 +306,7 @@ $(document).on('click', '#video_choosed',function(e){
             var encoded = encodeURIComponent(toencode);
             
 
-            var toinserted = '<img class="cke_video" data-cke-realelement="'+encoded+'" data-cke-real-node-type="1" alt="Video" title="Video" align="" src="" data-cke-real-element-type="video" style="width: 555px; height: 408px; background-image: url(http://localhost/skope/app/webroot/source/6.png);">';
+            var toinserted = '<img class="cke_video" data-cke-realelement="'+encoded+'" data-cke-real-node-type="1" alt="Video" title="Video" align="" src="" data-cke-real-element-type="video" style="width: 320px; height: 240px; background-image: url(http://localhost/skope/app/webroot/source/6.png);">';
             
 
             
@@ -323,8 +316,7 @@ $(document).on('click', '#video_choosed',function(e){
 
             // get the videojs player with id of "video_1"
 
-            var oldPlayer = document.getElementById('myRecordVideo_html5_api');
-            videojs(oldPlayer).dispose(); 
+            
               
             $.fancybox.close();
 
@@ -334,6 +326,24 @@ $(document).on('click', '#video_choosed',function(e){
             return false;
         });
   return false;
+});
+
+$(window).on('fancyboxBeforeClose', function(){
+    if($('#showgambarmikroskop').is(":visible")){
+        var reco=window.player.player().recorder;
+        if (!reco.isRecording())
+        {
+             //recorder.start();
+             reco.destroy();
+             alert('destroy');
+             //alert('start');
+        }else{
+            var oldPlayer = document.getElementById('myImage');
+            videojs(oldPlayer).dispose();     
+        }
+        
+    }
+    console.log('dtetetette');
 });
 </script>
 

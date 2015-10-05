@@ -27,12 +27,13 @@ a:hover {
 html,
 body {
   height: 100%;
-   background: url(../art/smicro/bg.jpg) no-repeat center center fixed; 
+   background: url(../art/smicro_new/bg_home.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
 body {
   color: #fff;
   text-align: center;
@@ -45,6 +46,15 @@ footer{
   height: 50px;
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+}
+html#contentdisplayed,body#contentdisplayed{
+  background: url(../art/smicro_new/bg_white.png) no-repeat center center fixed;
+  height: 100%;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -178,27 +188,39 @@ footer{
 #mainmenu{
   margin-top: 50px;
 }
-#mainmenu a{
-  display: block;
+#mainmenu>div{
+  padding-left: 0;
+  padding-right: 0;
+}
+#mainmenu > div,#mainmenu a{
+  /*display: block;
   height: 170px; 
   width: 170px; 
   border-radius: 170px;
-  padding-top: 40px;
+  padding-top: 40px;*/
   transition: background-color 0.5s ease;
 
 }
+span.desc_menu_home{
+      margin-top: 12px;
+    display: block;
+    margin-left: -30px;
+}
+#mainmenu a img{
+  margin-top: 20px;
+}
 
-#mainmenu a#makenew{
-   background-color: rgba(255,21,110,0.8); 
+#mainmenu a{
+   width: 100%;
+    display: block;
 }
 #mainmenu a#browse{
-   background-color: rgba(0,228,255,0.8); 
+  
 }
 #mainmenu a#preview{
-  background-color: rgba(253,215,52,0.8); 
    
 }
-#mainmenu a#makenew:hover,#mainmenu a#browse:hover,#mainmenu a#preview:hover{
+#mainmenu #home_createpenelitian:hover,#mainmenu #home_browsepenelitian:hover,#mainmenu #home_previewpenelitian:hover{
   text-decoration: none;
   background-color: rgba(0,0,0,0.8); 
 }
@@ -242,4 +264,102 @@ h1.title_createnew{
   border-bottom: 1px solid #dbcc98;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+#home_previewpenelitian{
+  background: #4ca8c6
+}
+#home_createpenelitian{
+  background: #c64451
+}
+#home_browsepenelitian{
+  background: #d3a82d
+}
+
+.masthead{
+  width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  margin-top: -150px;
+}
+.cover-container {
+  width: 100%;  
+}
+.menuhome{
+  width: 100%;
+}
+.mastfoot{
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.mastfoot img{
+ position: absolute;
+ bottom: 0;
+ right: 0;
+}
+.mastfoot p{
+position: absolute;
+ bottom: 0;
+ right: 80px;
+ color: #b2b2b2;
+ font-size: 0.83em;
+ text-align: right;
+}
+html#contentdisplayed .mastfoot p{
+  color: #5e5e5e;
+  text-shadow:none;
+  text-align: right;
+}
+.navbarcaripenelitian{
+  background: rgba(255,255,255,1); 
+  padding-top: 15px;
+}
+.logosmallleft{
+  top:10px;
+  left: 80px;
+  position: absolute;
+}
+.mainmenuleft span.icon{
+ top:17px;
+  left: 30px;
+  position: absolute; 
+  text-shadow: none;
+  font-size: 1.5em;
+  color: #000;
+}
+.mainmenuleft:hover{
+  color: #ef4c5d;
+}
+#nav_left_stick{
+  position: absolute;
+  top: -17px;
+  left: -230px;
+  /*left: 0;*/
+  width: 180px;
+  display: block;
+  background: #000;
+  height: 700px;
+  z-index: 10000;
+  border-right: 1px solid #000;
+}
+.leftmenu_circle{
+  width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 70px;
+    display: block;
+    margin-left: 55px;
+    margin-bottom: 10px;
+}
+
+#nav_left_stick ul{
+  margin-top: 60px;
+}
+#nav_left_stick ul li{
+  display: block;
+  margin-bottom: 30px;
+}
+#nav_left_stick ul li a:hover{
+  text-decoration: none;
 }

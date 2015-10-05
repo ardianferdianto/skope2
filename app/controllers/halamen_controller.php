@@ -689,6 +689,11 @@ class HalamenController extends AppController {
 		$this->set('imageurl',$imageurl);
 		$this->layout = 'default_blank';	
 	}
+	function editimagemikro_full(){
+		$imageurl=$this->params['url']['filename']; //get keyword from querystring//
+		$this->set('imageurl',$imageurl);
+		$this->layout = 'default_blank';	
+	}
 	function download($id){
 		$conditions = array('conditions'=>array('Halaman.lesson_id'=>$id),'order' => array('Halaman.order' => 'ASC'));
 		$isi=$this->Halaman->find('all', $conditions);

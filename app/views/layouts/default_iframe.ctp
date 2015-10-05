@@ -30,6 +30,7 @@ echo $html->css('app.css');
 
 <?php 
 echo $javascript->link('jquery-2.1.4.min.js');
+echo $javascript->link('jquery-ui.min.js');
 ?>
 
 <?php echo $javascript->link('jquery.fancybox.pack.js'); ?>
@@ -64,5 +65,8 @@ echo $javascript->link('ckeditor/ckeditor.js');
   echo $content_for_layout;
 ?>
 <script src="<?php echo $this->webroot;?>js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    window.appurlname = <?php echo $urlappname;?>
+</script>
 </body>
 </html>
