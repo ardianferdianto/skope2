@@ -133,7 +133,7 @@
                 return;
             }
 
-            socket = io.connect(('http://192.168.1.132:9001' || '/') + '?userid=' + connection.userid + '&msgEvent=' + connection.socketMessageEvent);
+            socket = io.connect((connection.socketURL || '/') + '?userid=' + connection.userid + '&msgEvent=' + connection.socketMessageEvent);
 
             socket.on('extra-data-updated', function(remoteUserId, extra) {
                 if (!connection.peers[remoteUserId]) return;

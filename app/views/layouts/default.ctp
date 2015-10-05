@@ -107,12 +107,13 @@
     <script src="<?php echo $this->webroot;?>skope_node/dev/FileBufferReader.js"></script>
 
     <!-- socket.io for signaling -->
-    <script src="http://192.168.1.132:9001/socket.io/socket.io.js"></script>
+    <script src="http://localhost:9001/socket.io/socket.io.js"></script>
     <script>
 
         var connection = new RTCMultiConnection();
+        connection.socketURL = 'http://localhost:9001/';
         connection.enableFileSharing = true; // by default, it is "false".
-            $('#join-room').on("click", function(e) {
+        $('#join-room').on("click", function(e) {
             connection.join('room_server');
         });
         function submitfunction(){
