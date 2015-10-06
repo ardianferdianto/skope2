@@ -129,9 +129,4 @@ connection.filesContainer = document.getElementById('file-container');
 connection.onUserStatusChanged = function(event) {
 	console.log(event.userid);
 };
-var socket = connection.getSocket();
-//socket.emit('custom-event', 'hi there');
-socket.on('custom-event', function(message) {
-    console.log(message);
-});
 </script>

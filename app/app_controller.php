@@ -11,7 +11,7 @@ class AppController extends Controller {
 		$ckeditorClass = 'CKEDITOR';
 		$this->set('ckeditorClass', $ckeditorClass);
 
-		$urlappname = 'skope2';
+		$urlappname = 'skope';
 		$this->set('urlappname',$urlappname);
 	    //Configure AuthComponent
 	    /*$this->Auth->authorize = 'actions';

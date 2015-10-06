@@ -319,7 +319,7 @@
             socket.on('connect', function() {
                 console.info('socket.io connection is opened.');
                 socket.emit('extra-data-updated', connection.extra);
-                //socket.emit('custom-event', connection.userid);
+                //socket.emit('custom-event', data);
 
                 /*socket.on('custom-event', function(data) {
                     socket.emit('custom-event', data);
@@ -330,7 +330,6 @@
                 socket = null;
                 connectSocket();
             });
-
             socket.on('join-with-password', function(remoteUserId) {
                 connection.onJoinWithPassword(remoteUserId);
             });

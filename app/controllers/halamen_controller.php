@@ -13,7 +13,33 @@ class HalamenController extends AppController {
 	    
 		
 	}
-	
+	function process(){
+		$bahan=$this->data["'Halaman'"]["'tes'"];
+		$ext=substr($bahan, -3);
+		if ($ext=='pdf') {
+			# code..
+			$path=WWW_ROOT."source/FILE_REFERENSI/LIBRARY/referensi".time().".".$ext;
+		} else if($ext == "jpg" or $ext == "png" or $ext == "gif"){
+			# code...
+			$path=WWW_ROOT."source/FILE_REFERENSI/GAMBAR/referensi".time().".".$ext;
+		}
+		else{
+			$path=WWW_ROOT."source/FILE_REFERENSI/VIDEO/referensi".time().".".$ext;
+		}
+		
+		//$path=WWW_ROOT."source/image_mikroskop/share-file".$ext;
+
+		//var_dump(expression)
+    	$success =file_put_contents($path, file_get_contents($this->data["'Halaman'"]["'tes'"]));
+    	$this->set('result',$success);
+    	if(!empty($this->data)){
+    		$this->set('result1',var_dump($this->data["'Halaman'"]["'tes'"]));	
+    	}else{
+    		$this->set('result1','kosong');
+    	}
+    	
+		$this->layout = 'default_blank';
+	}
 	function index() {
 		$this->Category->recursive = 0;
 		$this->set('categories', $this->paginate());

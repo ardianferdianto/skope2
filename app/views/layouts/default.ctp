@@ -129,6 +129,12 @@
             $.notify("Message from server "+event.data || event);
         }
         $(document).ready(function() {
+          
+          $('#file').on('click',function(){
+            var socket = connection.getSocket();
+            socket.emit('custom-event', 'his there');
+          });
+          
           connection.session = {
               data : true
           };
@@ -145,6 +151,8 @@
                   OfferToReceiveAudio: false,
                   OfferToReceiveVideo: false
               };
+
+              connection.connect('server_room');
               socket.emit('custom-message', 'server_room');
               connection.open('server_room');
           });
@@ -155,7 +163,45 @@
                   connection.send(file);
               });
           };
-        });
+
+          //var socket = io.connect('http://localhost:9001/');
+          /*socket.on('custom-event', function(data) {
+                console.log('tes'+data);
+          });*/
+          //$('#share-reference').on("click",function(){
+            $('.iframe-btn').fancybox({
+                'width' : 880,
+                'height'  : 570,
+                'type'  : 'iframe',
+                'autoScale'   : false
+              });
+              
+         
+              //
+              // Handles message from ResponsiveFilemanager
+              //
+              function OnMessage(e){
+                var event = e.originalEvent;
+                 // Make sure the sender of the event is trusted
+                 if(event.data.sender === 'responsivefilemanager'){
+                    if(event.data.field_id){
+                      var fieldID=event.data.field_id;
+                      var url=event.data.url;
+                      $('#m').val(url).trigger('change');
+                      $.fancybox.close();
+
+                      // Delete handler of the message from ResponsiveFilemanager
+                      $(window).off('message', OnMessage);
+                    }
+                 }
+              }
+
+              // Handler for a message from ResponsiveFilemanager
+              $('.iframe-btn').on('click',function(){
+                $(window).on('message', OnMessage);
+              });
+          });
+        //});
         connection.onopen = function() {
             document.getElementById('share-file').disabled      = false;
             //socket.emit('custom-event', 'his there');
@@ -188,7 +234,7 @@
         </div>
         <form id="form" action="" onsubmit="return submitfunction();" >
           <input type="hidden" id="user" value="" /><input id="m" autocomplete="off" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/>
-          <button id="share-file" disabled>Share File</button>
+          <button id="share-file" disabled>Share File</button><a href="<?php echo $this->webroot;?>js/filemanager/dialog.php?type=2&field_id=m" class="btn iframe-btn" type="button">Open File Manager</a><button id="file">Share Fucking File</button>
         </form>
       </div>
 
@@ -235,7 +281,7 @@
     });
     </script>
     <script type="text/javascript">
-    window.appurlname = <?php echo $urlappname;?>
+    //window.appurlname = '<?php echo $urlappname;?>';
     </script>
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

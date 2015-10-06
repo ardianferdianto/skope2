@@ -47,6 +47,9 @@ button[disabled], input[disabled], select[disabled] {
     <div id="file-container"></div>
     <div class="chat-output"></div>
 </div>
+<?php echo $form->create('Halaman',array('action'=>'','id'=>'apa'));?>
+    <input name="data['Halaman']['tes']" type="hidden" class="form-control" value="" id="isi">
+<?php echo $form->end();?>
 <hr>
 
 <script>
@@ -108,6 +111,7 @@ document.getElementById('share-file').onclick = function() {
 
 var chatContainer = document.querySelector('.chat-output');
 
+
 function appendDIV(event) {
 /*    var div = document.createElement('div');
     div.innerHTML = event.data || event;
@@ -115,8 +119,33 @@ function appendDIV(event) {
     div.tabIndex = 0; div.focus();
     
     document.getElementById('input-text-chat').focus();*/
+    var str=event.data;
+    var n=str.substr(0,4);
+    if(n=="http"){
+        //$("#isi").empty().append(str);
+        $("#isi").val(str);
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->webroot; ?>halamen/process/",
+            data: $("#apa").serialize(),
+            success: function(data) {
+                console.log(data);
+                $.notify("Message from server data berhasil di push ","success");
+            }
 
-    $.notify("Message from server "+event.data);
+        });
+
+         /*$.ajax({
+            url: "<?php echo $this->webroot; ?>halamen/process/"+str,
+            dataType: 'html',
+            success: function(result){
+                $.notify("Message from server data berhasil di push "+result,"success");
+            }
+          });*/
+    }
+    else{
+        $.notify("Message from server "+event.data);
+    }
 }
 
 // ......................................................
@@ -140,15 +169,19 @@ connection.onopen = function() {
     //document.getElementById('input-text-chat').disabled = false;
     //socket.emit('custom-event', document.getElementById('room-id').value);
     //connection.connectSocket(function(socket) {
-    socket.emit('custom-event', 'his there');
+    //socket.emit('custom-event', 'his there');
+
+    socket.on('custom-event',function(data){
+          console.log('tes'+data);
+        });
 };
 //connection.connect();
 connection.onUserStatusChanged = function(event) {
 	console.log(event.userid);
 };
-var socket = connection.getSocket();
+/*var socket = connection.getSocket();
 //socket.emit('custom-event', 'hi there');
 socket.on('custom-event', function(message) {
     console.log(message);
-});
+});*/
 </script>

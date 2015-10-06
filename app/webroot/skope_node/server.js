@@ -83,5 +83,6 @@ require('./Signaling-Server.js')(app, function(socket) {
 
     socket.on('custom-event', function(data) {
         socket.emit('custom-event', data);
+        console.log('eaaaa '+data);
     });
 });

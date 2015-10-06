@@ -107,15 +107,18 @@
     <script src="<?php echo $this->webroot;?>skope_node/dev/FileBufferReader.js"></script>
 
     <!-- socket.io for signaling -->
-    <script src="http://192.168.1.132:9001/socket.io/socket.io.js"></script>
+    <script src="http://localhost:9001/socket.io/socket.io.js"></script>
     <script>
 
         var connection = new RTCMultiConnection();
-        
+        //var socket=io.connect('http://localhost:9001/');
+        connection.socketURL = 'http://localhost:9001/';
+        var socket = connection.getSocket();
         function appendDIV(event) {
             $.notify("Message from server "+event.data);
+            //console.log(event.extra);
         }
-        //$(document).ready(function() {
+        $(document).ready(function() {
             connection.sdpConstraints.mandatory = {
                 OfferToReceiveAudio: false,
                 OfferToReceiveVideo: false
@@ -124,6 +127,7 @@
                 data : true
             };
             connection.connect('server_room');
+            //connection.join('server_room');
             // ......................................................
             // ..................RTCMultiConnection Code.............
             // ......................................................
@@ -138,9 +142,19 @@
             connection.filesContainer = document.getElementById('file-container');
             connection.onopen = function() {
                 document.getElementById('share-file').disabled      = false;
+
                 //document.getElementById('input-text-chat').disabled = false;
             };
-        //});
+            /*connection.connectSocket(function(socket) {
+              socket.on('custom-event',function(data){
+                console.log('tes'+data);
+              });
+              console.log('connect');
+            });*/
+        });
+              socket.on('custom-message',function(data){
+                console.log('tes'+data);
+              });
         /*document.getElementById('share-file').onclick = function() {
         var fileSelector = new FileSelector();
             fileSelector.selectSingleFile(function(file) {
